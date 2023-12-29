@@ -42,7 +42,7 @@ public class AuthController {
 	public ResponseEntity<BaseResponse<TokenDto>> authorize(@RequestBody @Valid LoginDto loginDto) {
 
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-				loginDto.getUsername(), loginDto.getPassword());
+				loginDto.getName(), loginDto.getPassword());
 
 		Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
 		SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -10,7 +10,7 @@ public class LoginDto {
 	@NotNull
 	@NotBlank
 	@Size(min = 3, max = 50)
-	private String username;
+	private String name;
 
 	@NotNull
 	@NotBlank
@@ -21,18 +21,18 @@ public class LoginDto {
 		super();
 	}
 
-	public LoginDto(String username, String password) {
+	public LoginDto(String name, String password) {
 
-		this.username = username;
+		this.name = name;
 		this.password = password;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {

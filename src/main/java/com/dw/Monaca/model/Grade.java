@@ -17,14 +17,27 @@ public class Grade {
 	
 	@Column(name = "grade_name", length = 3)
 	private String grade_name;
+	
+	@Column(name = "standard", length = 10)
+	private int standard;
 
 	public Grade() {
 		super();
 	}
 
-	public Grade(String grade_name) {
+	public Grade(Long id, String grade_name, int standard) {
 		super();
+		this.id = id;
 		this.grade_name = grade_name;
+		this.standard = standard;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getGrade_name() {
@@ -34,5 +47,15 @@ public class Grade {
 	public void setGrade_name(String grade_name) {
 		this.grade_name = grade_name;
 	}
+
+	public int getStandard() {
+		return standard;
+	}
+
+	public void setStandard(int standard) {
+		this.standard = standard;
+	}
+	
+	
 
 }

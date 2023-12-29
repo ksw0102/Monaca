@@ -19,19 +19,25 @@ import jakarta.persistence.Table;
 @Table(name = "`user`") // 현 공란
 public class User {
 
-	@Id
-	@Column(name = "user_id")
+	@Id // 자체적으로 붙는 ID
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
+	private Long id;
 
-	@Column(name = "username", length = 50, unique = true)
-	private String username;
+	// 회원 정보의 ID
+	@Column(name = "user_id", length = 20)
+	private String userId;
 
 	@Column(name = "password", length = 100)
 	private String password;
 
+	@Column(name = "name", length = 50, unique = true)
+	private String name;
+
 	@Column(name = "nickname", length = 50)
 	private String nickname;
+
+	@Column(name = "birth_Date", length = 50)
+	private String birth_date;
 
 	@Column(name = "gender", length = 3)
 	private String gender;
@@ -39,8 +45,8 @@ public class User {
 	@Column(name = "email", length = 100)
 	private String email;
 
-	@Column(name = "birth_Date", length = 50)
-	private String birth_date;
+	@Column(name = "phone_num", length = 15)
+	private int phone_num;
 
 	@Column(name = "professor_intro", length = 50)
 	private String professor_intro;
@@ -69,17 +75,19 @@ public class User {
 		super();
 	}
 
-	public User(Long userId, String username, String password, String nickname, String gender, String email,
-			String birth_date, String professor_intro, String professor_resume, String image, boolean activated,
-			Character character, LectureCategory lectureCategory, Set<Authority> authorities) {
+	public User(Long id, String userId, String password, String name, String nickname, String birth_date, String gender,
+			String email, int phone_num, String professor_intro, String professor_resume, String image,
+			boolean activated, Character character, LectureCategory lectureCategory, Set<Authority> authorities) {
 		super();
+		this.id = id;
 		this.userId = userId;
-		this.username = username;
 		this.password = password;
+		this.name = name;
 		this.nickname = nickname;
+		this.birth_date = birth_date;
 		this.gender = gender;
 		this.email = email;
-		this.birth_date = birth_date;
+		this.phone_num = phone_num;
 		this.professor_intro = professor_intro;
 		this.professor_resume = professor_resume;
 		this.image = image;
@@ -89,20 +97,20 @@ public class User {
 		this.authorities = authorities;
 	}
 
-	public Long getUserId() {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
@@ -113,12 +121,28 @@ public class User {
 		this.password = password;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public String getBirth_date() {
+		return birth_date;
+	}
+
+	public void setBirth_date(String birth_date) {
+		this.birth_date = birth_date;
 	}
 
 	public String getGender() {
@@ -137,12 +161,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getBirth_date() {
-		return birth_date;
+	public int getPhone_num() {
+		return phone_num;
 	}
 
-	public void setBirth_date(String birth_date) {
-		this.birth_date = birth_date;
+	public void setPhone_num(int phone_num) {
+		this.phone_num = phone_num;
 	}
 
 	public String getProfessor_intro() {

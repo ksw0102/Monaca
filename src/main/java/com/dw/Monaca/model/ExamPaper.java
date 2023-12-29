@@ -39,13 +39,24 @@ public class ExamPaper {
 		super();
 	}
 
-	public ExamPaper(String title, String exam_test, String create_at, String exam_image, boolean is_checked) {
+	public ExamPaper(Long id, String title, String exam_test, String create_at, String exam_image, boolean is_checked,
+			Lecture lecture) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.exam_test = exam_test;
 		this.create_at = create_at;
 		this.exam_image = exam_image;
 		this.is_checked = is_checked;
+		this.lecture = lecture;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -87,5 +98,15 @@ public class ExamPaper {
 	public void setIs_checked(boolean is_checked) {
 		this.is_checked = is_checked;
 	}
+
+	public Lecture getLecture() {
+		return lecture;
+	}
+
+	public void setLecture(Lecture lecture) {
+		this.lecture = lecture;
+	}
+
+	
 
 }
