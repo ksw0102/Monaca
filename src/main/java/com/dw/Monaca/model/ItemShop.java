@@ -1,6 +1,6 @@
 package com.dw.Monaca.model;
 
-import java.util.List;
+import java.util.Set;
 
 import com.dw.Monaca.jwtauthority.model.User;
 
@@ -38,13 +38,13 @@ public class ItemShop {
 	@ManyToMany
 	@JoinTable(name = "item_cart", joinColumns = { @JoinColumn(name = "item_shop_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "user_id") })
-	private List<User> user;
+	private Set<User> user;
 
 	public ItemShop() {
 		super();
 	}
 
-	public ItemShop(ItemShopCategory itemShopCategory, String item_name, String image, String price, List<User> user) {
+	public ItemShop(ItemShopCategory itemShopCategory, String item_name, String image, String price, Set<User> user) {
 		super();
 		this.itemShopCategory = itemShopCategory;
 		this.item_name = item_name;
@@ -85,11 +85,11 @@ public class ItemShop {
 		this.price = price;
 	}
 
-	public List<User> getUser() {
+	public Set<User> getUser() {
 		return user;
 	}
 
-	public void setUser(List<User> user) {
+	public void setUser(Set<User> user) {
 		this.user = user;
 	}
 

@@ -33,17 +33,35 @@ public class QandA {
 	@Column(name = "create_at")
 	private String create_at;
 
+	@Column(name = "disposable_pw", length = 10)
+	private String disposable_pw;
+
+	@Column(name = "is_hide")
+	private boolean is_hide;
+
 	public QandA() {
 		super();
 	}
 
-	public QandA(User user, Lecture lecture, String title, String text, String create_at) {
+	public QandA(Long id, User user, Lecture lecture, String title, String text, String create_at, String disposable_pw,
+			boolean is_hide) {
 		super();
+		this.id = id;
 		this.user = user;
 		this.lecture = lecture;
 		this.title = title;
 		this.text = text;
 		this.create_at = create_at;
+		this.disposable_pw = disposable_pw;
+		this.is_hide = is_hide;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public User getUser() {
@@ -84,6 +102,22 @@ public class QandA {
 
 	public void setCreate_at(String create_at) {
 		this.create_at = create_at;
+	}
+
+	public String getDisposable_pw() {
+		return disposable_pw;
+	}
+
+	public void setDisposable_pw(String disposable_pw) {
+		this.disposable_pw = disposable_pw;
+	}
+
+	public boolean isIs_hide() {
+		return is_hide;
+	}
+
+	public void setIs_hide(boolean is_hide) {
+		this.is_hide = is_hide;
 	}
 
 }

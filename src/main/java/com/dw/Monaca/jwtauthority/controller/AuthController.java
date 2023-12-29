@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dw.Monaca.dto.BaseResponse;
+import com.dw.Monaca.dto.ResponseDto;
 import com.dw.Monaca.enumStatus.ResultCode;
 import com.dw.Monaca.jwtauthority.dto.LoginDto;
 import com.dw.Monaca.jwtauthority.dto.TokenDto;
@@ -39,7 +39,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/authenticate")
-	public ResponseEntity<BaseResponse<TokenDto>> authorize(@RequestBody @Valid LoginDto loginDto) {
+	public ResponseEntity<ResponseDto<TokenDto>> authorize(@RequestBody @Valid LoginDto loginDto) {
 
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
 				loginDto.getName(), loginDto.getPassword());
@@ -52,7 +52,7 @@ public class AuthController {
 		httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
 		return new ResponseEntity<>(
-				new BaseResponse<>(ResultCode.SUCCESS.name(), new TokenDto(jwt), ResultCode.SUCCESS.getMsg()),
+				new ResponseDto<>(ResultCode.SUCCESS.name(), new TokenDto(jwt), ResultCode.SUCCESS.getMsg()),
 				httpHeaders, HttpStatus.OK);
 	}
 

@@ -1,12 +1,12 @@
 package com.dw.Monaca.dto;
 
-public class BaseResponse<T> {
+public class ResponseDto<T> {
 
 	private String resultCode;
 	private T data;
 	private String message;
 
-	public BaseResponse(String resultCode, T data, String message) {
+	public ResponseDto(String resultCode, T data, String message) {
 		super();
 		this.resultCode = resultCode;
 		this.data = data;

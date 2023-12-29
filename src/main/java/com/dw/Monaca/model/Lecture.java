@@ -1,6 +1,6 @@
 package com.dw.Monaca.model;
 
-import java.util.List;
+import java.util.Set;
 
 import com.dw.Monaca.jwtauthority.model.User;
 
@@ -41,26 +41,38 @@ public class Lecture {
 	@Column(name = "price", length = 20)
 	private String price;
 
+	@Column(name = "video")
+	private String video;
+
 	@ManyToMany
 	@JoinTable(name = "lecture_cart", joinColumns = { @JoinColumn(name = "lecture_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "user_id") })
-
-	private List<User> users;
+	private Set<User> users;
 
 	public Lecture() {
 		super();
 	}
 
-	public Lecture(LectureCategory lectureCategory, String lecture_name, String lecture_description,
-			String lecture_play_time, String image, String price, List<User> users) {
+	public Lecture(Long id, LectureCategory lectureCategory, String lecture_name, String lecture_description,
+			String lecture_play_time, String image, String price, String video, Set<User> users) {
 		super();
+		this.id = id;
 		this.lectureCategory = lectureCategory;
 		this.lecture_name = lecture_name;
 		this.lecture_description = lecture_description;
 		this.lecture_play_time = lecture_play_time;
 		this.image = image;
 		this.price = price;
+		this.video = video;
 		this.users = users;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public LectureCategory getLectureCategory() {
@@ -111,11 +123,19 @@ public class Lecture {
 		this.price = price;
 	}
 
-	public List<User> getUsers() {
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
