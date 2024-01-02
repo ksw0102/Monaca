@@ -38,19 +38,29 @@ public class ItemShop {
 	@ManyToMany
 	@JoinTable(name = "item_cart", joinColumns = { @JoinColumn(name = "item_shop_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "user_id") })
-	private Set<User> user;
+	private Set<User> users;
 
 	public ItemShop() {
 		super();
 	}
 
-	public ItemShop(ItemShopCategory itemShopCategory, String item_name, String image, String price, Set<User> user) {
+	public ItemShop(Long id, ItemShopCategory itemShopCategory, String item_name, String image, String price,
+			Set<User> users) {
 		super();
+		this.id = id;
 		this.itemShopCategory = itemShopCategory;
 		this.item_name = item_name;
 		this.image = image;
 		this.price = price;
-		this.user = user;
+		this.users = users;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public ItemShopCategory getItemShopCategory() {
@@ -85,12 +95,12 @@ public class ItemShop {
 		this.price = price;
 	}
 
-	public Set<User> getUser() {
-		return user;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(Set<User> user) {
-		this.user = user;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 }

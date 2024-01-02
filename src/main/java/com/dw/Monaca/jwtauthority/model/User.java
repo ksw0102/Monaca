@@ -3,6 +3,7 @@ package com.dw.Monaca.jwtauthority.model;
 import java.util.Set;
 
 import com.dw.Monaca.model.LectureCategory;
+import com.dw.Monaca.model.UserItem;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -61,7 +62,7 @@ public class User {
 	private boolean activated;
 
 	@ManyToOne
-	private Character character;
+	private UserItem userItem;
 	@ManyToOne
 	private LectureCategory lectureCategory;
 
@@ -77,7 +78,7 @@ public class User {
 
 	public User(Long id, String userId, String password, String name, String nickname, String birth_date, String gender,
 			String email, int phone_num, String professor_intro, String professor_resume, String image,
-			boolean activated, Character character, LectureCategory lectureCategory, Set<Authority> authorities) {
+			boolean activated, UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -92,7 +93,7 @@ public class User {
 		this.professor_resume = professor_resume;
 		this.image = image;
 		this.activated = activated;
-		this.character = character;
+		this.userItem = userItem;
 		this.lectureCategory = lectureCategory;
 		this.authorities = authorities;
 	}
@@ -201,12 +202,12 @@ public class User {
 		this.activated = activated;
 	}
 
-	public Character getCharacter() {
-		return character;
+	public UserItem getUserItem() {
+		return userItem;
 	}
 
-	public void setCharacter(Character character) {
-		this.character = character;
+	public void setUserItem(UserItem userItem) {
+		this.userItem = userItem;
 	}
 
 	public LectureCategory getLectureCategory() {
