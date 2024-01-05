@@ -16,24 +16,24 @@ public class LectureCategory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 
-	@Column(name = "category_name", length = 50)
-	private String category_name;
+	@Column(name = "categoryName", length = 50)
+	private String categoryName;
 
 	public LectureCategory() {
 		super();
 	}
 
-	public LectureCategory(String category_name) {
+	public LectureCategory(String categoryName) {
 		super();
-		this.category_name = category_name;
+		this.categoryName = categoryName;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategory_name(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 }

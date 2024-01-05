@@ -33,7 +33,6 @@ public class AuthController {
 	private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
 	public AuthController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder) {
-		super();
 		this.tokenProvider = tokenProvider;
 		this.authenticationManagerBuilder = authenticationManagerBuilder;
 	}
@@ -42,7 +41,7 @@ public class AuthController {
 	public ResponseEntity<ResponseDto<TokenDto>> authorize(@RequestBody @Valid LoginDto loginDto) {
 
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-				loginDto.getName(), loginDto.getPassword());
+				loginDto.getLoginId(), loginDto.getPassword());
 
 		Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
 		SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -25,8 +25,8 @@ public class LectureHistory {
 	@ManyToOne 
 	private Lecture lecture; 
 
-	@Column(name = "last_date", length = 50)
-	private String last_date;
+	@Column(name = "lastDate", length = 50)
+	private String lastDate;
 	
 	@Column(name = "is_completed",length = 5)
 	private boolean is_completed;
@@ -35,12 +35,12 @@ public class LectureHistory {
 		super();
 	}
 
-	public LectureHistory(Long id, User user, Lecture lecture, String last_date, boolean is_completed) {
+	public LectureHistory(Long id, User user, Lecture lecture, String lastDate, boolean is_completed) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.lecture = lecture;
-		this.last_date = last_date;
+		this.lastDate = lastDate;
 		this.is_completed = is_completed;
 	}
 
@@ -68,12 +68,12 @@ public class LectureHistory {
 		this.lecture = lecture;
 	}
 
-	public String getLast_date() {
-		return last_date;
+	public String getLastDate() {
+		return lastDate;
 	}
 
-	public void setLast_date(String last_date) {
-		this.last_date = last_date;
+	public void setLast_date(String lastDate) {
+		this.lastDate = lastDate;
 	}
 
 	public boolean isIs_completed() {

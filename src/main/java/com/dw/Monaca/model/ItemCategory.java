@@ -16,17 +16,17 @@ public class ItemCategory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 
-	@Column(name = "category_name", length = 50)
-	private String category_name;
+	@Column(name = "categoryName", length = 50)
+	private String categoryName;
 
 	public ItemCategory() {
 		super();
 	}
 
-	public ItemCategory(Long id, String category_name) {
+	public ItemCategory(Long id, String categoryName) {
 		super();
 		this.id = id;
-		this.category_name = category_name;
+		this.categoryName = categoryName;
 	}
 
 	public Long getId() {
@@ -37,12 +37,12 @@ public class ItemCategory {
 		this.id = id;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 }

@@ -28,20 +28,20 @@ public class ClassRoom {
 	@Column(name = "is_completed")
 	private boolean is_completed;
 	
-	@Column(name = "progress_rate")
-	private double progress_rate;
+	@Column(name = "progressRate")
+	private double progressRate;
 
 	public ClassRoom() {
 		super();
 	}
 
-	public ClassRoom(Long id, User user, Lecture lecture, boolean is_completed, double progress_rate) {
+	public ClassRoom(Long id, User user, Lecture lecture, boolean is_completed, double progressRate) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.lecture = lecture;
 		this.is_completed = is_completed;
-		this.progress_rate = progress_rate;
+		this.progressRate = progressRate;
 	}
 
 	public Long getId() {
@@ -76,13 +76,14 @@ public class ClassRoom {
 		this.is_completed = is_completed;
 	}
 
-	public double getProgress_rate() {
-		return progress_rate;
+	public double getProgressRate() {
+		return progressRate;
 	}
 
-	public void setProgress_rate(double progress_rate) {
-		this.progress_rate = progress_rate;
+	public void setProgressRate(double progressRate) {
+		this.progressRate = progressRate;
 	}
+
 	
 	
 

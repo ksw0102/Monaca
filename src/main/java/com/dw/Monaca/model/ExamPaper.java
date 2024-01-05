@@ -21,14 +21,14 @@ public class ExamPaper {
 	@Column(name = "title", length = 50)
 	private String title;
 
-	@Column(name = "exam_test", length = 100)
-	private String exam_test;
+	@Column(name = "examTest", length = 100)
+	private String examTest;
 
-	@Column(name = "create_at", length = 50)
-	private String create_at;
+	@Column(name = "createAt", length = 50)
+	private String createAt;
 
-	@Column(name = "exam_image", length = 500)
-	private String exam_image;
+	@Column(name = "examImage", length = 500)
+	private String examImage;
 
 	@Column(name = "is_checked")
 	private boolean is_checked;
@@ -40,14 +40,14 @@ public class ExamPaper {
 		super();
 	}
 
-	public ExamPaper(Long id, String title, String exam_test, String create_at, String exam_image, boolean is_checked,
+	public ExamPaper(Long id, String title, String examTest, String createAt, String examImage, boolean is_checked,
 			Lecture lecture) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.exam_test = exam_test;
-		this.create_at = create_at;
-		this.exam_image = exam_image;
+		this.examTest = examTest;
+		this.createAt = createAt;
+		this.examImage = examImage;
 		this.is_checked = is_checked;
 		this.lecture = lecture;
 	}
@@ -68,28 +68,28 @@ public class ExamPaper {
 		this.title = title;
 	}
 
-	public String getExam_test() {
-		return exam_test;
+	public String getExamTest() {
+		return examTest;
 	}
 
-	public void setExam_test(String exam_test) {
-		this.exam_test = exam_test;
+	public void setExamTest(String examTest) {
+		this.examTest = examTest;
 	}
 
-	public String getCreate_at() {
-		return create_at;
+	public String getCreateAt() {
+		return createAt;
 	}
 
-	public void setCreate_at(String create_at) {
-		this.create_at = create_at;
+	public void setCreateAt(String createAt) {
+		this.createAt = createAt;
 	}
 
-	public String getExam_image() {
-		return exam_image;
+	public String getExamImage() {
+		return examImage;
 	}
 
-	public void setExam_image(String exam_image) {
-		this.exam_image = exam_image;
+	public void setExamImage(String examImage) {
+		this.examImage = examImage;
 	}
 
 	public boolean isIs_checked() {
@@ -108,6 +108,7 @@ public class ExamPaper {
 		this.lecture = lecture;
 	}
 
+	
 	
 
 }

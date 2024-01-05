@@ -10,7 +10,7 @@ public class LoginDto {
 	@NotNull
 	@NotBlank
 	@Size(min = 3, max = 50)
-	private String name;
+	private String loginId;
 
 	@NotNull
 	@NotBlank
@@ -21,18 +21,19 @@ public class LoginDto {
 		super();
 	}
 
-	public LoginDto(String name, String password) {
-
-		this.name = name;
+	public LoginDto(@NotNull @NotBlank @Size(min = 3, max = 50) String loginId,
+			@NotNull @NotBlank @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,20}$", message = "영문 숫자 특수문자를 포함한 8~20자리로 입력해주세요") String password) {
+		super();
+		this.loginId = loginId;
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getLoginId() {
+		return loginId;
 	}
 
-	public void setUsername(String name) {
-		this.name = name;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	public String getPassword() {
@@ -42,5 +43,7 @@ public class LoginDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	
 
 }

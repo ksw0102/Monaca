@@ -34,18 +34,18 @@ public class Material {
 	@Column(name = "image")
 	private String image;
 
-	@Column(name = "create_at")
-	private String create_at;
+	@Column(name = "createAt")
+	private String createAt;
 
 	@Column(name = "is_reservation")
-	private String is_reservation;
+	private boolean is_reservation;
 
 	public Material() {
 		super();
 	}
 
 	public Material(Long id, User user, com.dw.Monaca.model.Lecture lecture, String title, String text, String image,
-			String create_at, String is_reservation) {
+			String createAt, boolean is_reservation) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -53,7 +53,7 @@ public class Material {
 		this.title = title;
 		this.text = text;
 		this.image = image;
-		this.create_at = create_at;
+		this.createAt = createAt;
 		this.is_reservation = is_reservation;
 	}
 
@@ -105,20 +105,22 @@ public class Material {
 		this.image = image;
 	}
 
-	public String getCreate_at() {
-		return create_at;
+	public String getCreateAt() {
+		return createAt;
 	}
 
-	public void setCreate_at(String create_at) {
-		this.create_at = create_at;
+	public void setCreateAt(String createAt) {
+		this.createAt = createAt;
 	}
 
-	public String getIs_reservation() {
+	public boolean isIs_reservation() {
 		return is_reservation;
 	}
 
-	public void setIs_reservation(String is_reservation) {
+	public void setIs_reservation(boolean is_reservation) {
 		this.is_reservation = is_reservation;
 	}
+
+	
 
 }

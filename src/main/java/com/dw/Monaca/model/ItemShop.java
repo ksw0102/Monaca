@@ -27,8 +27,8 @@ public class ItemShop {
 	@ManyToOne
 	private ItemCategory itemShopCategory;
 
-	@Column(name = "item_name", length = 50)
-	private String item_name;
+	@Column(name = "itemName", length = 50)
+	private String itemName;
 
 	@Column(name = "image", length = 500)
 	private String image;
@@ -46,12 +46,12 @@ public class ItemShop {
 		super();
 	}
 
-	public ItemShop(Long id, ItemCategory itemShopCategory, String item_name, String image, String price,
+	public ItemShop(Long id, ItemCategory itemShopCategory, String itemName, String image, String price,
 			Set<User> users) {
 		super();
 		this.id = id;
 		this.itemShopCategory = itemShopCategory;
-		this.item_name = item_name;
+		this.itemName = itemName;
 		this.image = image;
 		this.price = price;
 		this.users = users;
@@ -73,12 +73,12 @@ public class ItemShop {
 		this.itemShopCategory = itemShopCategory;
 	}
 
-	public String getItem_name() {
-		return item_name;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setItem_name(String item_name) {
-		this.item_name = item_name;
+	public void setItem_name(String itemName) {
+		this.itemName = itemName;
 	}
 
 	public String getImage() {

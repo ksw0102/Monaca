@@ -20,14 +20,14 @@ public class Lecture {
 	@ManyToOne
 	private LectureCategory lectureCategory;
 
-	@Column(name = "lecture_name", length = 50)
-	private String lecture_name;
+	@Column(name = "lectureName", length = 50)
+	private String lectureName;
 
-	@Column(name = "lecture_description", length = 500)
-	private String lecture_description;
+	@Column(name = "lectureDescription", length = 500)
+	private String lectureDescription;
 
-	@Column(name = "lecture_play_time", length = 100)
-	private String lecture_play_time;
+	@Column(name = "lecturePlayTime", length = 100)
+	private String lecturePlayTime;
 
 	@Column(name = "image", length = 500)
 	private String image;
@@ -42,14 +42,14 @@ public class Lecture {
 		super();
 	}
 
-	public Lecture(Long id, LectureCategory lectureCategory, String lecture_name, String lecture_description,
-			String lecture_play_time, String image, String price, String video) {
+	public Lecture(Long id, LectureCategory lectureCategory, String lectureName, String lectureDescription,
+			String lecturePlayTime, String image, String price, String video) {
 		super();
 		this.id = id;
 		this.lectureCategory = lectureCategory;
-		this.lecture_name = lecture_name;
-		this.lecture_description = lecture_description;
-		this.lecture_play_time = lecture_play_time;
+		this.lectureName = lectureName;
+		this.lectureDescription = lectureDescription;
+		this.lecturePlayTime = lecturePlayTime;
 		this.image = image;
 		this.price = price;
 		this.video = video;
@@ -71,28 +71,28 @@ public class Lecture {
 		this.lectureCategory = lectureCategory;
 	}
 
-	public String getLecture_name() {
-		return lecture_name;
+	public String getLectureName() {
+		return lectureName;
 	}
 
-	public void setLecture_name(String lecture_name) {
-		this.lecture_name = lecture_name;
+	public void setLectureName(String lectureName) {
+		this.lectureName = lectureName;
 	}
 
-	public String getLecture_description() {
-		return lecture_description;
+	public String getLectureDescription() {
+		return lectureDescription;
 	}
 
-	public void setLecture_description(String lecture_description) {
-		this.lecture_description = lecture_description;
+	public void setLectureDescription(String lectureDescription) {
+		this.lectureDescription = lectureDescription;
 	}
 
-	public String getLecture_play_time() {
-		return lecture_play_time;
+	public String getLecturePlayTime() {
+		return lecturePlayTime;
 	}
 
-	public void setLecture_play_time(String lecture_play_time) {
-		this.lecture_play_time = lecture_play_time;
+	public void setLecturePlayTime(String lecturePlayTime) {
+		this.lecturePlayTime = lecturePlayTime;
 	}
 
 	public String getImage() {
@@ -118,6 +118,8 @@ public class Lecture {
 	public void setVideo(String video) {
 		this.video = video;
 	}
+
+	
 
 	
 }

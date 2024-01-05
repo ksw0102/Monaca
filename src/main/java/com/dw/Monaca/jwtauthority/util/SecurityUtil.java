@@ -15,7 +15,7 @@ public class SecurityUtil {
 	private SecurityUtil() {
 	}
 
-	public static Optional<String> getCurrentName() {
+	public static Optional<String> getCurrentLoginId() {
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		if (authentication == null) {
@@ -23,13 +23,13 @@ public class SecurityUtil {
 			return Optional.empty();
 		}
 
-		String name = null;
+		String loginId = null;
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails springSecurityUser = (UserDetails) authentication.getPrincipal();
-			name = springSecurityUser.getUsername();
+			loginId = springSecurityUser.getUsername();
 		} else if (authentication.getPrincipal() instanceof String) {
-			name = (String) authentication.getPrincipal();
+			loginId = (String) authentication.getPrincipal();
 		}
-		return Optional.ofNullable(name);
+		return Optional.ofNullable(loginId);
 	}
 }

@@ -29,28 +29,31 @@ public class Examination {
 	@ManyToOne
 	private ExamPaper examPaper;
 
-	@Column(name = "answer_text", length = 500)
-	private String answer_text;
-
-	@Column(name = "submit_date", length = 50)
-	private String submit_date;
-
-	@Column(name = "score", length = 5)
-	private String score;
-
+	@Column(name = "answerText", length = 500)
+	private String answerText;
+	
 	public Examination() {
 		super();
 	}
 
-	public Examination(User user, Grade grade, ExamPaper examPaper, String answer_text, String submit_date,
+	public Examination(Long id, User user, Grade grade, ExamPaper examPaper, String answerText, String submitDate,
 			String score) {
 		super();
+		this.id = id;
 		this.user = user;
 		this.grade = grade;
 		this.examPaper = examPaper;
-		this.answer_text = answer_text;
-		this.submit_date = submit_date;
+		this.answerText = answerText;
+		this.submitDate = submitDate;
 		this.score = score;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public User getUser() {
@@ -77,20 +80,20 @@ public class Examination {
 		this.examPaper = examPaper;
 	}
 
-	public String getAnswer_text() {
-		return answer_text;
+	public String getAnswerText() {
+		return answerText;
 	}
 
-	public void setAnswer_text(String answer_text) {
-		this.answer_text = answer_text;
+	public void setAnswerText(String answerText) {
+		this.answerText = answerText;
 	}
 
-	public String getSubmit_date() {
-		return submit_date;
+	public String getSubmitDate() {
+		return submitDate;
 	}
 
-	public void setSubmit_date(String submit_date) {
-		this.submit_date = submit_date;
+	public void setSubmitDate(String submitDate) {
+		this.submitDate = submitDate;
 	}
 
 	public String getScore() {
@@ -101,4 +104,13 @@ public class Examination {
 		this.score = score;
 	}
 
+	@Column(name = "submitDate", length = 50)
+	private String submitDate;
+
+	@Column(name = "score", length = 5)
+	private String score;
+
+	
+
+	
 }

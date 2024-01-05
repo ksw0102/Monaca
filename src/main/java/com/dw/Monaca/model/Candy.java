@@ -15,8 +15,8 @@ public class Candy {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "candy_name", length = 10)
-	private String candy_name;
+	@Column(name = "candyName", length = 10)
+	private String candyName;
 
 	@Column(name = "image")
 	private String image;
@@ -25,10 +25,10 @@ public class Candy {
 		super();
 	}
 
-	public Candy(Long id, String candy_name, String image) {
+	public Candy(Long id, String candyName, String image) {
 		super();
 		this.id = id;
-		this.candy_name = candy_name;
+		this.candyName = candyName;
 		this.image = image;
 
 	}
@@ -41,12 +41,12 @@ public class Candy {
 		this.id = id;
 	}
 
-	public String getCandy_name() {
-		return candy_name;
+	public String getCandyName() {
+		return candyName;
 	}
 
-	public void setCandy_name(String candy_name) {
-		this.candy_name = candy_name;
+	public void setCandyName(String candyName) {
+		this.candyName = candyName;
 	}
 
 	public String getImage() {

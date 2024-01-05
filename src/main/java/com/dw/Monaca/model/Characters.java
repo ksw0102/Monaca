@@ -16,8 +16,8 @@ public class Characters {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 
-	@Column(name = "character_name", length = 20)
-	private String character_name;
+	@Column(name = "characterName", length = 20)
+	private String characterName;
 
 	@Column(name = "species", length = 10)
 	private String species;
@@ -29,10 +29,10 @@ public class Characters {
 		super();
 	}
 
-	public Characters(Long id, String character_name, String species, String image) {
+	public Characters(Long id, String characterName, String species, String image) {
 		super();
 		this.id = id;
-		this.character_name = character_name;
+		this.characterName = characterName;
 		this.species = species;
 		this.image = image;
 	}
@@ -45,12 +45,12 @@ public class Characters {
 		this.id = id;
 	}
 
-	public String getCharacter_name() {
-		return character_name;
+	public String getCharacterName() {
+		return characterName;
 	}
 
-	public void setCharacter_name(String character_name) {
-		this.character_name = character_name;
+	public void setCharacterName(String characterName) {
+		this.characterName = characterName;
 	}
 
 	public String getSpecies() {

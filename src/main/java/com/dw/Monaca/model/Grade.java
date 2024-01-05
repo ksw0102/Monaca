@@ -16,8 +16,8 @@ public class Grade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 	
-	@Column(name = "grade_name", length = 3)
-	private String grade_name;
+	@Column(name = "gradeName", length = 3)
+	private String gradeName;
 	
 	@Column(name = "standard", length = 10)
 	private int standard;
@@ -26,10 +26,10 @@ public class Grade {
 		super();
 	}
 
-	public Grade(Long id, String grade_name, int standard) {
+	public Grade(Long id, String gradeName, int standard) {
 		super();
 		this.id = id;
-		this.grade_name = grade_name;
+		this.gradeName = gradeName;
 		this.standard = standard;
 	}
 
@@ -41,12 +41,12 @@ public class Grade {
 		this.id = id;
 	}
 
-	public String getGrade_name() {
-		return grade_name;
+	public String getGradeName() {
+		return gradeName;
 	}
 
-	public void setGrade_name(String grade_name) {
-		this.grade_name = grade_name;
+	public void setGradeName(String gradeName) {
+		this.gradeName = gradeName;
 	}
 
 	public int getStandard() {
@@ -56,6 +56,8 @@ public class Grade {
 	public void setStandard(int standard) {
 		this.standard = standard;
 	}
+
+	
 	
 	
 

@@ -31,21 +31,21 @@ public class Message {
 	@Column(name = "reciever")
 	private String reciever;
 
-	@Column(name = "create_at")
-	private String create_at;
+	@Column(name = "createAt")
+	private String createAt;
 
 	public Message() {
 		super();
 	}
 
-	public Message(Long id, User user, String title, String text, String reciever, String create_at) {
+	public Message(Long id, User user, String title, String text, String reciever, String createAt) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.title = title;
 		this.text = text;
 		this.reciever = reciever;
-		this.create_at = create_at;
+		this.createAt = createAt;
 	}
 
 	public Long getId() {
@@ -88,12 +88,14 @@ public class Message {
 		this.reciever = reciever;
 	}
 
-	public String getCreate_at() {
-		return create_at;
+	public String getCreateAt() {
+		return createAt;
 	}
 
-	public void setCreate_at(String create_at) {
-		this.create_at = create_at;
+	public void setCreateAt(String createAt) {
+		this.createAt = createAt;
 	}
+
+	
 
 }

@@ -31,7 +31,7 @@ public class User {
 	private Long id;
 
 	// 회원 정보의 ID
-	@Column(name = "login_id", length = 20)
+	@Column(name = "loginId", length = 20)
 	private String loginId;
 
 	@Column(name = "password", length = 100)
@@ -43,8 +43,8 @@ public class User {
 	@Column(name = "nickname", length = 50)
 	private String nickname;
 
-	@Column(name = "birth_Date", length = 50)
-	private String birth_date;
+	@Column(name = "birthDate", length = 50)
+	private String birthDate;
 
 	@Column(name = "gender", length = 3)
 	private String gender;
@@ -52,21 +52,23 @@ public class User {
 	@Column(name = "email", length = 100)
 	private String email;
 
-	@Column(name = "phone_num", length = 15)
-	private int phone_num;
+	@Column(name = "phoneNum", length = 15)
+	private int phoneNum;
 
-	@Column(name = "professor_intro", length = 50)
-	private String professor_intro;
+	@Column(name = "professorIntro", length = 50)
+	private String professorIntro;
 
-	@Column(name = "professor_resume", length = 50)
-	private String professor_resume;
+	@Column(name = "professorResume", length = 50)
+	private String professorResume;
 
 	@Column(name = "image", length = 500)
 	private String image;
 
-	// 활성화 / 비활성화
+//	// 활성화 / 비활성화
+//	@Column(name = "activated")
+//	private boolean activated = false;
 	@Column(name = "activated")
-	private boolean activated;
+	private Boolean activated;
 
 	@ManyToOne
 	private UserItem userItem;
@@ -88,35 +90,35 @@ public class User {
 	@ManyToMany
 	@JoinTable(name = "wishlist", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "lecture_id)") })
-	private Set<Lecture> wish_lecture;
+	private Set<Lecture> wishLecture;
 
 	public User() {
 		super();
 	}
 
-	public User(Long id, String loginId, String password, String name, String nickname, String birth_date,
-			String gender, String email, int phone_num, String professor_intro, String professor_resume, String image,
-			boolean activated, UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities,
-			Set<Lecture> lectures, Set<Lecture> wish_lecture) {
+	public User(Long id, String loginId, String password, String name, String nickname, String birthDate, String gender,
+			String email, int phoneNum, String professorIntro, String professorResume, String image, Boolean activated,
+			UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities, Set<Lecture> lectures,
+			Set<Lecture> wishLecture) {
 		super();
 		this.id = id;
 		this.loginId = loginId;
 		this.password = password;
 		this.name = name;
 		this.nickname = nickname;
-		this.birth_date = birth_date;
+		this.birthDate = birthDate;
 		this.gender = gender;
 		this.email = email;
-		this.phone_num = phone_num;
-		this.professor_intro = professor_intro;
-		this.professor_resume = professor_resume;
+		this.phoneNum = phoneNum;
+		this.professorIntro = professorIntro;
+		this.professorResume = professorResume;
 		this.image = image;
 		this.activated = activated;
 		this.userItem = userItem;
 		this.lectureCategory = lectureCategory;
 		this.authorities = authorities;
 		this.lectures = lectures;
-		this.wish_lecture = wish_lecture;
+		this.wishLecture = wishLecture;
 	}
 
 	public Long getId() {
@@ -159,12 +161,12 @@ public class User {
 		this.nickname = nickname;
 	}
 
-	public String getBirth_date() {
-		return birth_date;
+	public String getBirthDate() {
+		return birthDate;
 	}
 
-	public void setBirth_date(String birth_date) {
-		this.birth_date = birth_date;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getGender() {
@@ -183,28 +185,28 @@ public class User {
 		this.email = email;
 	}
 
-	public int getPhone_num() {
-		return phone_num;
+	public int getPhoneNum() {
+		return phoneNum;
 	}
 
-	public void setPhone_num(int phone_num) {
-		this.phone_num = phone_num;
+	public void setPhoneNum(int phoneNum) {
+		this.phoneNum = phoneNum;
 	}
 
-	public String getProfessor_intro() {
-		return professor_intro;
+	public String getProfessorIntro() {
+		return professorIntro;
 	}
 
-	public void setProfessor_intro(String professor_intro) {
-		this.professor_intro = professor_intro;
+	public void setProfessorIntro(String professorIntro) {
+		this.professorIntro = professorIntro;
 	}
 
-	public String getProfessor_resume() {
-		return professor_resume;
+	public String getProfessorResume() {
+		return professorResume;
 	}
 
-	public void setProfessor_resume(String professor_resume) {
-		this.professor_resume = professor_resume;
+	public void setProfessorResume(String professorResume) {
+		this.professorResume = professorResume;
 	}
 
 	public String getImage() {
@@ -215,11 +217,11 @@ public class User {
 		this.image = image;
 	}
 
-	public boolean isActivated() {
+	public Boolean getActivated() {
 		return activated;
 	}
 
-	public void setActivated(boolean activated) {
+	public void setActivated(Boolean activated) {
 		this.activated = activated;
 	}
 
@@ -255,16 +257,15 @@ public class User {
 		this.lectures = lectures;
 	}
 
-	public Set<Lecture> getWish_lecture() {
-		return wish_lecture;
+	public Set<Lecture> getWishLecture() {
+		return wishLecture;
 	}
 
-	public void setWish_lecture(Set<Lecture> wish_lecture) {
-		this.wish_lecture = wish_lecture;
+	public void setWishLecture(Set<Lecture> wishLecture) {
+		this.wishLecture = wishLecture;
 	}
 
-	
-	//사용하지 않음
+	// 사용하지 않음
 //	@ManyToOne
 //	private UserItem userItem;
 //	@ManyToOne

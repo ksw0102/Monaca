@@ -9,14 +9,16 @@ import com.dw.Monaca.jwtauthority.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	@EntityGraph(attributePaths = "authorities")
-	Optional<User> findOneWithAuthoritiesByName(String name);
+	Optional<User> findOneWithAuthoritiesByLoginId(String loginId);
 
-	User findByName(String login_Id);
+//	User findByLoginId(String login_Id);
 
 	@EntityGraph(attributePaths = "lectures")
-	Optional<User> findOneWithLecturesByName(String name);
+	Optional<User> findOneWithLecturesByLoginId(String loginId);
 
-	@EntityGraph(attributePaths = "wish_lecture")
-	Optional<User> findOneWithWishlistByName(String name);
+	@EntityGraph(attributePaths = "wishLecture")
+	Optional<User> findOneWithWishlistByLoginId(String loginId);
+
+	User findByLoginId(String loginId);
 
 }
