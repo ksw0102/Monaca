@@ -11,10 +11,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "'class_room'")
+@Table(name = "class_room")
 public class ClassRoom {
 	
 	@Id
+	@Column(name = "classroom_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	

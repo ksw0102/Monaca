@@ -2,8 +2,13 @@ package com.dw.Monaca.jwtauthority.model;
 
 import java.util.Set;
 
+import com.dw.Monaca.model.Lecture;
 import com.dw.Monaca.model.LectureCategory;
 import com.dw.Monaca.model.UserItem;
+
+//import com.dw.Monaca.model.Lecture;
+//import com.dw.Monaca.model.LectureCategory;
+//import com.dw.Monaca.model.UserItem;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,16 +22,17 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "`user`") // 현 공란
+@Table(name = "`user`")
 public class User {
 
 	@Id // 자체적으로 붙는 ID
+	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	// 회원 정보의 ID
-	@Column(name = "user_id", length = 20)
-	private String userId;
+	@Column(name = "login_id", length = 20)
+	private String loginId;
 
 	@Column(name = "password", length = 100)
 	private String password;
@@ -58,11 +64,13 @@ public class User {
 	@Column(name = "image", length = 500)
 	private String image;
 
+	// 활성화 / 비활성화
 	@Column(name = "activated")
 	private boolean activated;
 
 	@ManyToOne
 	private UserItem userItem;
+
 	@ManyToOne
 	private LectureCategory lectureCategory;
 
@@ -72,16 +80,27 @@ public class User {
 					@JoinColumn(name = "authority_name", referencedColumnName = "authority_name") })
 	private Set<Authority> authorities;
 
+	@ManyToMany
+	@JoinTable(name = "lecture_cart", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "lecture_id") })
+	private Set<Lecture> lectures;
+
+	@ManyToMany
+	@JoinTable(name = "wishlist", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "lecture_id)") })
+	private Set<Lecture> wish_lecture;
+
 	public User() {
 		super();
 	}
 
-	public User(Long id, String userId, String password, String name, String nickname, String birth_date, String gender,
-			String email, int phone_num, String professor_intro, String professor_resume, String image,
-			boolean activated, UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities) {
+	public User(Long id, String loginId, String password, String name, String nickname, String birth_date,
+			String gender, String email, int phone_num, String professor_intro, String professor_resume, String image,
+			boolean activated, UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities,
+			Set<Lecture> lectures, Set<Lecture> wish_lecture) {
 		super();
 		this.id = id;
-		this.userId = userId;
+		this.loginId = loginId;
 		this.password = password;
 		this.name = name;
 		this.nickname = nickname;
@@ -96,6 +115,8 @@ public class User {
 		this.userItem = userItem;
 		this.lectureCategory = lectureCategory;
 		this.authorities = authorities;
+		this.lectures = lectures;
+		this.wish_lecture = wish_lecture;
 	}
 
 	public Long getId() {
@@ -106,12 +127,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getLoginId() {
+		return loginId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	public String getPassword() {
@@ -225,5 +246,44 @@ public class User {
 	public void setAuthorities(Set<Authority> authorities) {
 		this.authorities = authorities;
 	}
+
+	public Set<Lecture> getLectures() {
+		return lectures;
+	}
+
+	public void setLectures(Set<Lecture> lectures) {
+		this.lectures = lectures;
+	}
+
+	public Set<Lecture> getWish_lecture() {
+		return wish_lecture;
+	}
+
+	public void setWish_lecture(Set<Lecture> wish_lecture) {
+		this.wish_lecture = wish_lecture;
+	}
+
+	
+	//사용하지 않음
+//	@ManyToOne
+//	private UserItem userItem;
+//	@ManyToOne
+//	private LectureCategory lectureCategory;
+//
+//	@ManyToMany
+//	@JoinTable(name = "user_authority", joinColumns = {
+//			@JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = {
+//					@JoinColumn(name = "authority_name", referencedColumnName = "authority_name") })
+//	private Set<Authority> authorities;
+//
+//	@ManyToMany
+//	@JoinTable(name = "lecture_cart", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+//			@JoinColumn(name = "lecture_id") })
+//	private Set<Lecture> lectures;
+//
+//	@ManyToMany
+//	@JoinTable(name = "wishlist", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+//			@JoinColumn(name = "lecture_id)") })
+//	private Set<Lecture> wish_lecture;
 
 }

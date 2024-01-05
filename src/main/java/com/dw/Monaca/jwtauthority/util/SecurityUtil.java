@@ -11,24 +11,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class SecurityUtil {
 
 	private static final Logger logger = LoggerFactory.getLogger(SecurityUtil.class);
-			
-			private SecurityUtil() {}
-	
-	public static Optional<String> getCurrentUsername() {
+
+	private SecurityUtil() {
+	}
+
+	public static Optional<String> getCurrentName() {
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		if (authentication == null ) {
+
+		if (authentication == null) {
 			logger.debug("Security Context에 인증 정보가 없습니다.");
-			return Optional.empty();	
+			return Optional.empty();
 		}
-		
-		String username = null;
+
+		String name = null;
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails springSecurityUser = (UserDetails) authentication.getPrincipal();
-			username = springSecurityUser.getUsername();
+			name = springSecurityUser.getUsername();
 		} else if (authentication.getPrincipal() instanceof String) {
-			username = (String) authentication.getPrincipal();
+			name = (String) authentication.getPrincipal();
 		}
-		return Optional.ofNullable(username);
+		return Optional.ofNullable(name);
 	}
 }

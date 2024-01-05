@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 public class Message {
 
 	@Id
+	@Column(name = "message_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

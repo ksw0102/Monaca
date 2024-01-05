@@ -1,5 +1,6 @@
 package com.dw.Monaca.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,7 @@ import jakarta.persistence.Table;
 public class QandABin {
 
 	@Id
+	@Column(name = "q_and_a_bin_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

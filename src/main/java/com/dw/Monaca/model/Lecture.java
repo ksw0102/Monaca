@@ -1,17 +1,10 @@
 package com.dw.Monaca.model;
 
-import java.util.Set;
-
-import com.dw.Monaca.jwtauthority.model.User;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -20,6 +13,7 @@ import jakarta.persistence.Table;
 public class Lecture {
 
 	@Id // ID라는 것을 인식시켜주고 id값을 넣지 않아도 오류가 나지 않음!!
+	@Column(name = "lecture_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 
@@ -44,17 +38,12 @@ public class Lecture {
 	@Column(name = "video")
 	private String video;
 
-	@ManyToMany
-	@JoinTable(name = "lecture_cart", joinColumns = { @JoinColumn(name = "lecture_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "user_id") })
-	private Set<User> users;
-
 	public Lecture() {
 		super();
 	}
 
 	public Lecture(Long id, LectureCategory lectureCategory, String lecture_name, String lecture_description,
-			String lecture_play_time, String image, String price, String video, Set<User> users) {
+			String lecture_play_time, String image, String price, String video) {
 		super();
 		this.id = id;
 		this.lectureCategory = lectureCategory;
@@ -64,7 +53,6 @@ public class Lecture {
 		this.image = image;
 		this.price = price;
 		this.video = video;
-		this.users = users;
 	}
 
 	public Long getId() {
@@ -131,12 +119,5 @@ public class Lecture {
 		this.video = video;
 	}
 
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-
+	
 }

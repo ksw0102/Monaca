@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 public class Grade {
 	
 	@Id // ID라는 것을 인식시켜주고 id값을 넣지 않아도 오류가 나지 않음!!
+	@Column(name = "grade_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 	

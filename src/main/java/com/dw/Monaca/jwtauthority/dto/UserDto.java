@@ -1,7 +1,9 @@
 package com.dw.Monaca.jwtauthority.dto;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import com.dw.Monaca.jwtauthority.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotBlank;
@@ -15,7 +17,7 @@ public class UserDto {
 	@NotNull
 	@NotBlank
 	@Size(min = 6, max = 15)
-	private String user_id; //
+	private String login_id; //
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@NotNull
@@ -50,11 +52,13 @@ public class UserDto {
 	@Pattern(regexp = "^[\\d]{11}+$", message = "'-' 기호 없이 전화번호를 입력해주세요.")
 	private int phone_num;
 
+	private Set<AuthorityDto> authorityDtoSet;
+
 	public UserDto() {
 		super();
 	}
 
-	public UserDto(@NotNull @NotBlank @Size(min = 6, max = 15) String user_id,
+	public UserDto(@NotNull @NotBlank @Size(min = 6, max = 15) String login_id,
 			@NotNull @NotBlank @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,20}$", message = "영문 숫자 특수문자를 포함한 8~20자리로 입력해주세요") String password,
 			@NotNull @NotBlank @Size(min = 3, max = 6) String name,
 			@NotNull @NotBlank @Size(min = 3, max = 50) String nickname,
@@ -64,7 +68,7 @@ public class UserDto {
 			@NotNull @NotBlank @Size(min = 10, max = 30) @Pattern(regexp = "^[\\d]{11}+$", message = "'-' 기호 없이 전화번호를 입력해주세요.") int phone_num,
 			Set<AuthorityDto> authorityDtoSet) {
 		super();
-		this.user_id = user_id;
+		this.login_id = login_id;
 		this.password = password;
 		this.name = name;
 		this.nickname = nickname;
@@ -75,12 +79,12 @@ public class UserDto {
 		this.authorityDtoSet = authorityDtoSet;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getLogin_id() {
+		return login_id;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setLogin_id(String login_id) {
+		this.login_id = login_id;
 	}
 
 	public String getPassword() {
@@ -147,6 +151,14 @@ public class UserDto {
 		this.authorityDtoSet = authorityDtoSet;
 	}
 
-	private Set<AuthorityDto> authorityDtoSet;
+	public static UserDto from(User user) {
+		if (user == null)
+			return null;
+
+		Set<AuthorityDto> authorityDtoSet = user.getAuthorities().stream()
+				.map(authority -> new AuthorityDto(authority.getAuthorityName())).collect(Collectors.toSet());
+		return new UserDto(user.getLoginId(), null, user.getName(), user.getNickname(), user.getBirth_date(),
+				user.getGender(), user.getEmail(), user.getPhone_num(), authorityDtoSet);
+	}
 
 }

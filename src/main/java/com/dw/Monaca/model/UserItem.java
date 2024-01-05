@@ -14,10 +14,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "'user_item")
+@Table(name = "user_item")
 public class UserItem {
 
 	@Id
+	@Column(name = "user_item_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -31,15 +32,13 @@ public class UserItem {
 	@JoinTable(name = "userCharacter", joinColumns = {
 			@JoinColumn(name = "user_item_id", referencedColumnName = "user_item_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "character_id", referencedColumnName = "character_id") })
-	Set<Character> characters;
+	Set<Characters> characters;
 
-	
-	
 	public UserItem() {
 		super();
 	}
 
-	public UserItem(Long id, ItemShop itemShop, boolean is_wearing, Set<Character> characters) {
+	public UserItem(Long id, ItemShop itemShop, boolean is_wearing, Set<Characters> characters) {
 		super();
 		this.id = id;
 		this.itemShop = itemShop;
@@ -71,11 +70,11 @@ public class UserItem {
 		this.is_wearing = is_wearing;
 	}
 
-	public Set<Character> getCharacters() {
+	public Set<Characters> getCharacters() {
 		return characters;
 	}
 
-	public void setCharacters(Set<Character> characters) {
+	public void setCharacters(Set<Characters> characters) {
 		this.characters = characters;
 	}
 

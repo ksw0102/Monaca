@@ -1,21 +1,17 @@
 package com.dw.Monaca.model;
 
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "candy")
 public class Candy {
 	@Id
+	@Column(name = "candy_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -25,22 +21,16 @@ public class Candy {
 	@Column(name = "image")
 	private String image;
 
-	@ManyToMany
-	@JoinTable(name = "candy_point", joinColumns = {
-			@JoinColumn(name = "candy_id", referencedColumnName = "candy_id") }, inverseJoinColumns = {
-					@JoinColumn(name = "attendance_id", referencedColumnName = "attendance_id") })
-	Set<Attendance> attendances;
-
 	public Candy() {
 		super();
 	}
 
-	public Candy(Long id, String candy_name, String image, Set<Attendance> attendances) {
+	public Candy(Long id, String candy_name, String image) {
 		super();
 		this.id = id;
 		this.candy_name = candy_name;
 		this.image = image;
-		this.attendances = attendances;
+
 	}
 
 	public Long getId() {
@@ -67,12 +57,12 @@ public class Candy {
 		this.image = image;
 	}
 
-	public Set<Attendance> getAttendances() {
-		return attendances;
-	}
-
-	public void setAttendances(Set<Attendance> attendances) {
-		this.attendances = attendances;
-	}
+//	public Set<Attendance> getAttendances() {
+//		return attendances;
+//	}
+//
+//	public void setAttendances(Set<Attendance> attendances) {
+//		this.attendances = attendances;
+//	}
 
 }

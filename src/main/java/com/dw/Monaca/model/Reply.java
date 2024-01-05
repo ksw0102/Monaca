@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 public class Reply {
 
 	@Id
+	@Column(name = "reply_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 

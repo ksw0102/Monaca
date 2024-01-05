@@ -8,31 +8,41 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "character")
-public class Character {
-	
+@Table(name = "characters")
+public class Characters {
+
 	@Id // ID라는 것을 인식시켜주고 id값을 넣지 않아도 오류가 나지 않음!!
+	@Column(name = "character_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
-	
+
 	@Column(name = "character_name", length = 20)
 	private String character_name;
 
-	@Column(name = "character_gender", length = 6)
-	private String character_gender;
+	@Column(name = "species", length = 10)
+	private String species;
 
 	@Column(name = "image", length = 500)
 	private String image;
 
-	public Character() {
+	public Characters() {
 		super();
 	}
 
-	public Character(String character_name, String character_gender, String image) {
+	public Characters(Long id, String character_name, String species, String image) {
 		super();
+		this.id = id;
 		this.character_name = character_name;
-		this.character_gender = character_gender;
+		this.species = species;
 		this.image = image;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCharacter_name() {
@@ -43,12 +53,12 @@ public class Character {
 		this.character_name = character_name;
 	}
 
-	public String getCharacter_gender() {
-		return character_gender;
+	public String getSpecies() {
+		return species;
 	}
 
-	public void setCharacter_gender(String character_gender) {
-		this.character_gender = character_gender;
+	public void setSpecies(String species) {
+		this.species = species;
 	}
 
 	public String getImage() {
@@ -58,5 +68,7 @@ public class Character {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	
 
 }

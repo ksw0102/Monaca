@@ -20,11 +20,12 @@ import jakarta.persistence.Table;
 public class ItemShop {
 
 	@Id // ID라는 것을 인식시켜주고 id값을 넣지 않아도 오류가 나지 않음!!
+	@Column(name = "item_shop_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
 
 	@ManyToOne
-	private ItemShopCategory itemShopCategory;
+	private ItemCategory itemShopCategory;
 
 	@Column(name = "item_name", length = 50)
 	private String item_name;
@@ -36,15 +37,16 @@ public class ItemShop {
 	private String price;
 
 	@ManyToMany
-	@JoinTable(name = "item_cart", joinColumns = { @JoinColumn(name = "item_shop_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "user_id") })
+	@JoinTable(name = "item_cart", joinColumns = {
+			@JoinColumn(name = "item_shop_id", referencedColumnName = "item_shop_id") }, inverseJoinColumns = {
+					@JoinColumn(name = "user_id", referencedColumnName = "user_id") })
 	private Set<User> users;
 
 	public ItemShop() {
 		super();
 	}
 
-	public ItemShop(Long id, ItemShopCategory itemShopCategory, String item_name, String image, String price,
+	public ItemShop(Long id, ItemCategory itemShopCategory, String item_name, String image, String price,
 			Set<User> users) {
 		super();
 		this.id = id;
@@ -63,11 +65,11 @@ public class ItemShop {
 		this.id = id;
 	}
 
-	public ItemShopCategory getItemShopCategory() {
+	public ItemCategory getItemShopCategory() {
 		return itemShopCategory;
 	}
 
-	public void setItemShopCategory(ItemShopCategory itemShopCategory) {
+	public void setItemShopCategory(ItemCategory itemShopCategory) {
 		this.itemShopCategory = itemShopCategory;
 	}
 
