@@ -31,29 +31,29 @@ public class User {
 	private Long id;
 
 	// 회원 정보의 ID
-	@Column(name = "loginId", length = 20)
+	@Column(name = "loginId", length = 15, unique = true)
 	private String loginId;
 
-	@Column(name = "password", length = 100)
+	@Column(name = "password")
 	private String password;
 
-	@Column(name = "name", length = 50, unique = true)
+	@Column(name = "name", length = 6)
 	private String name;
 
 	@Column(name = "nickname", length = 50)
 	private String nickname;
 
-	@Column(name = "birthDate", length = 50)
+	@Column(name = "birthDate")
 	private String birthDate;
 
-	@Column(name = "gender", length = 3)
+	@Column(name = "gender")
 	private String gender;
 
-	@Column(name = "email", length = 100)
+	@Column(name = "email")
 	private String email;
 
-	@Column(name = "phoneNum", length = 15)
-	private int phoneNum;
+	@Column(name = "phoneNum", length = 30)
+	private String phoneNum;
 
 	@Column(name = "professorIntro", length = 50)
 	private String professorIntro;
@@ -97,9 +97,9 @@ public class User {
 	}
 
 	public User(Long id, String loginId, String password, String name, String nickname, String birthDate, String gender,
-			String email, int phoneNum, String professorIntro, String professorResume, String image, Boolean activated,
-			UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities, Set<Lecture> lectures,
-			Set<Lecture> wishLecture) {
+			String email, String phoneNum, String professorIntro, String professorResume, String image,
+			Boolean activated, UserItem userItem, LectureCategory lectureCategory, Set<Authority> authorities,
+			Set<Lecture> lectures, Set<Lecture> wishLecture) {
 		super();
 		this.id = id;
 		this.loginId = loginId;
@@ -185,11 +185,11 @@ public class User {
 		this.email = email;
 	}
 
-	public int getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 

@@ -39,9 +39,13 @@ public class UserService {
 
 		User user = new User();
 		user.setLoginId(userDto.getLoginId());
-		user.setName(userDto.getName());
 		user.setPassword(passwordEncoder.encode(userDto.getPassword())); // 암호화
+		user.setName(userDto.getName());
 		user.setNickname(userDto.getNickname());
+		user.setBirthDate(userDto.getBirthDate());
+		user.setGender(userDto.getGender());
+		user.setEmail(userDto.getEmail());
+		user.setPhoneNum(userDto.getPhoneNum());
 		user.setAuthorities(Collections.singleton(authority)); // 권한
 		user.setActivated(true);
 		System.out.println(user.getLoginId());

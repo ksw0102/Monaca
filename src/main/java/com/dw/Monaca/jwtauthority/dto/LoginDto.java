@@ -21,8 +21,7 @@ public class LoginDto {
 		super();
 	}
 
-	public LoginDto(@NotNull @NotBlank @Size(min = 3, max = 50) String loginId,
-			@NotNull @NotBlank @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@#$%^&*!])[A-Za-z\\d@#$%^&*!]{8,20}$", message = "영문 숫자 특수문자를 포함한 8~20자리로 입력해주세요") String password) {
+	public LoginDto(String loginId, String password) {
 		super();
 		this.loginId = loginId;
 		this.password = password;
@@ -43,7 +42,5 @@ public class LoginDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
 
 }

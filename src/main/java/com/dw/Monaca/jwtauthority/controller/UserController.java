@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dw.Monaca.dto.ResponseDto;
 import com.dw.Monaca.enumStatus.ResultCode;
 import com.dw.Monaca.jwtauthority.dto.LoginDto;
+import com.dw.Monaca.jwtauthority.dto.UserDto;
+import com.dw.Monaca.jwtauthority.model.User;
 import com.dw.Monaca.jwtauthority.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,6 +33,13 @@ public class UserController {
 
 	public UserController(UserService userService) {
 		this.userService = userService;
+	}
+
+	@PostMapping("/signup")
+	public ResponseEntity<ResponseDto<UserDto>> signup(@RequestBody @Valid UserDto userDto) {
+		return ResponseEntity.ok(new ResponseDto<>(ResultCode.SUCCESS.name(), userService.signup(userDto), // 성공한 다음에 //
+																											// return
+				ResultCode.SUCCESS.getMsg()));
 	}
 
 	@PostMapping("/login") // 유효성검사를 통과(validation을 통과)하고 나서 틀려야 문구가 나옴

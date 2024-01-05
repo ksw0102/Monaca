@@ -1,6 +1,5 @@
 package com.dw.Monaca.jwtauthority.config;
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -51,13 +50,11 @@ public class SecurityConfig {
 
 				.authorizeHttpRequests(
 						authorizeHttpRequests -> authorizeHttpRequests
-								.requestMatchers("/api/authenticate").permitAll()
-								// 임시 주소
+						.requestMatchers("/api/authenticate").permitAll()
 								.requestMatchers("/api/user").permitAll()
 								.requestMatchers("/api/user/**").permitAll()
 								.requestMatchers("/api/login").permitAll()
-								.requestMatchers("/api/signup").permitAll() // 두 개 다 가입은 허용
-//								.anyRequest().authenticated() // 그리고 그 나머지 모든 것은 보안설정을 해라.
+								.requestMatchers("/api/signup").permitAll() 
 				)
 
 				.sessionManagement(
