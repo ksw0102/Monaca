@@ -37,6 +37,7 @@ public class UserController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<ResponseDto<UserDto>> signup(@RequestBody @Valid UserDto userDto) {
+		System.out.println("tesetsetsetest");
 		return ResponseEntity.ok(new ResponseDto<>(ResultCode.SUCCESS.name(), userService.signup(userDto), // 성공한 다음에 //
 																											// return
 				ResultCode.SUCCESS.getMsg()));
@@ -44,9 +45,10 @@ public class UserController {
 
 	@GetMapping("/user")
 	@PreAuthorize("hasAnyRole('USER','ADMIN','PROFESSOR')")
-	public ResponseEntity<ResponseDto<UserDto>> getCurrentUserInfo(HttpServletRequest request) {
+	public ResponseEntity<ResponseDto<UserDto>> getCurrentUserInfo(HttpServletRequest request) {		
 //		return ResponseEntity.ok(ResultCode.SUCCESS.getMsg());
-		return ResponseEntity.ok(new ResponseDto<>(ResultCode.SUCCESS.getMsg(),
+		System.out.println("testtest");
+		return ResponseEntity.ok(new ResponseDto<>(ResultCode.SUCCESS.name(),
 				userService.getCurrentUserWithAuthorities(), ResultCode.SUCCESS.getMsg()));
 	}
 

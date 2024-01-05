@@ -54,6 +54,8 @@ public class SecurityConfig {
 //								.requestMatchers("/api/user").permitAll()
 //								.requestMatchers("/api/user/**").permitAll()
 								.requestMatchers("/api/signup").permitAll() 
+								.requestMatchers("/api/lecture").permitAll()
+								.anyRequest().authenticated() // 이새기들은 필수!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				)
 
 				.sessionManagement(
