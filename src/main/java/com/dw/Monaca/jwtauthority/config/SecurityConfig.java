@@ -54,7 +54,7 @@ public class SecurityConfig {
 //								.requestMatchers("/api/user").permitAll()
 //								.requestMatchers("/api/user/**").permitAll()
 								.requestMatchers("/api/signup").permitAll() 
-								.requestMatchers("/api/lecture").permitAll()
+//								.requestMatchers("/api/exampaper").permitAll()
 								.anyRequest().authenticated() // 이새기들은 필수!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				)
 

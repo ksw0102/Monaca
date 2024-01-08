@@ -16,19 +16,19 @@ import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
-public class LectureServiceImpl implements LectureService{
-private final LectureRepository lectureRepository;
+public class LectureServiceImpl implements LectureService {
+	private final LectureRepository lectureRepository;
 
-@Autowired
-public LectureServiceImpl(LectureRepository lectureRepository) {
-	this.lectureRepository = lectureRepository;
-}
-
-public ResponseDto<List<Lecture>> getAllLecture() {
-	List<Lecture> lectures = lectureRepository.findAll();
-	if (lectures.isEmpty()) {
-		throw new InvalidRequestException("Lecture Empty", "강의가 존재하지 않습니다.");
+	@Autowired
+	public LectureServiceImpl(LectureRepository lectureRepository) {
+		this.lectureRepository = lectureRepository;
 	}
-	return new ResponseDto<>(ResultCode.SUCCESS.name(), lectures, ResultCode.SUCCESS.getMsg());
-}
+
+	public ResponseDto<List<Lecture>> getAllLecture() {
+		List<Lecture> lectures = lectureRepository.findAll();
+		if (lectures.isEmpty()) {
+			throw new InvalidRequestException("Lecture Empty", "강의가 존재하지 않습니다.");
+		}
+		return new ResponseDto<>(ResultCode.SUCCESS.name(), lectures, ResultCode.SUCCESS.getMsg());
+	}
 }

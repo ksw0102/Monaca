@@ -1,5 +1,6 @@
 package com.dw.Monaca.model;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import com.dw.Monaca.jwtauthority.model.User;
@@ -14,6 +15,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "attendance")
@@ -27,8 +30,10 @@ public class Attendance {
 	@ManyToOne
 	private User user;
 
-	@Column(name = "time_stamp", length = 50)
-	private String time_stamp;
+	@Column(nullable = false, updatable = false) // => //이 코드는 록으로 남아야하기 때문에 작성시점이 업데이트되면 안됨.(그래서 꼭 updatable을 사용하는게
+													// 좋음!)(DB에 주는 명령!)
+	@Temporal(TemporalType.TIMESTAMP) // Attendance 가 생성되는 시점을 기록으로 남기기 위해 쓰임
+	private LocalDateTime time_stamp;
 
 	@ManyToMany
 	@JoinTable(name = "candy_point", joinColumns = {
@@ -40,7 +45,7 @@ public class Attendance {
 		super();
 	}
 
-	public Attendance(Long id, User user, String time_stamp, Set<Candy> candies) {
+	public Attendance(Long id, User user, LocalDateTime time_stamp, Set<Candy> candies) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -64,11 +69,11 @@ public class Attendance {
 		this.user = user;
 	}
 
-	public String getTime_stamp() {
+	public LocalDateTime getTime_stamp() {
 		return time_stamp;
 	}
 
-	public void setTime_stamp(String time_stamp) {
+	public void setTime_stamp(LocalDateTime time_stamp) {
 		this.time_stamp = time_stamp;
 	}
 

@@ -1,5 +1,6 @@
 package com.dw.Monaca.model;
 
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "exam_paper")
@@ -17,15 +20,16 @@ public class ExamPaper {
 	@Column(name = "exam_paper_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // databases마다 만드는 방법이 달라서 표기해줘야 함!
 	private Long id;
-	
+
 	@Column(name = "title", length = 50)
 	private String title;
 
-	@Column(name = "examTest", length = 100)
-	private String examTest;
+	@Column(name = "examText", length = 100)
+	private String examText;
 
-	@Column(name = "createAt", length = 50)
-	private String createAt;
+	@Column(nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime createAt;
 
 	@Column(name = "examImage", length = 500)
 	private String examImage;
@@ -35,17 +39,17 @@ public class ExamPaper {
 
 	@ManyToOne
 	private Lecture lecture;
-	
+
 	public ExamPaper() {
 		super();
 	}
 
-	public ExamPaper(Long id, String title, String examTest, String createAt, String examImage, boolean is_checked,
-			Lecture lecture) {
+	public ExamPaper(Long id, String title, String examText, LocalDateTime createAt, String examImage,
+			boolean is_checked, Lecture lecture) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.examTest = examTest;
+		this.examText = examText;
 		this.createAt = createAt;
 		this.examImage = examImage;
 		this.is_checked = is_checked;
@@ -68,19 +72,19 @@ public class ExamPaper {
 		this.title = title;
 	}
 
-	public String getExamTest() {
-		return examTest;
+	public String getExamText() {
+		return examText;
 	}
 
-	public void setExamTest(String examTest) {
-		this.examTest = examTest;
+	public void setExamText(String examText) {
+		this.examText = examText;
 	}
 
-	public String getCreateAt() {
+	public LocalDateTime getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(String createAt) {
+	public void setCreateAt(LocalDateTime createAt) {
 		this.createAt = createAt;
 	}
 
@@ -107,8 +111,5 @@ public class ExamPaper {
 	public void setLecture(Lecture lecture) {
 		this.lecture = lecture;
 	}
-
-	
-	
 
 }

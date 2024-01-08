@@ -1,5 +1,7 @@
 package com.dw.Monaca.model;
 
+import java.time.LocalDateTime;
+
 import com.dw.Monaca.jwtauthority.model.User;
 
 import jakarta.persistence.Column;
@@ -9,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "message")
@@ -31,14 +35,15 @@ public class Message {
 	@Column(name = "reciever")
 	private String reciever;
 
-	@Column(name = "createAt")
-	private String createAt;
+	@Column(nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime createAt;
 
 	public Message() {
 		super();
 	}
 
-	public Message(Long id, User user, String title, String text, String reciever, String createAt) {
+	public Message(Long id, User user, String title, String text, String reciever, LocalDateTime createAt) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -88,14 +93,12 @@ public class Message {
 		this.reciever = reciever;
 	}
 
-	public String getCreateAt() {
+	public LocalDateTime getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(String createAt) {
+	public void setCreateAt(LocalDateTime createAt) {
 		this.createAt = createAt;
 	}
-
-	
 
 }

@@ -59,6 +59,7 @@ public class UserController {
 		return ResponseEntity.ok(new ResponseDto<>(ResultCode.SUCCESS.name(),
 				userService.getUserWithAuthorities(loginId), ResultCode.SUCCESS.getMsg()));
 	}
+	
 
 //@PostMapping("/signup")
 //public ResponseEntity<ResponseDto<UserDto>> signUp(@RequestBody @Valid UserDto userDto) {
