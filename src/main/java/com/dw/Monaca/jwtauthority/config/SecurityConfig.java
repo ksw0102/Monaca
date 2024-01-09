@@ -51,10 +51,10 @@ public class SecurityConfig {
 				.authorizeHttpRequests(
 						authorizeHttpRequests -> authorizeHttpRequests
 						.requestMatchers("/api/authenticate").permitAll()
-//								.requestMatchers("/api/user").permitAll()
-//								.requestMatchers("/api/user/**").permitAll()
 								.requestMatchers("/api/signup").permitAll() 
-//								.requestMatchers("/api/exampaper").permitAll()
+								.requestMatchers("/api/lecture").permitAll()
+								.requestMatchers("/api/qanda").permitAll()
+//								.requestMatchers("/api/qanda/**").permitAll()
 								.anyRequest().authenticated() // 이새기들은 필수!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				)
 

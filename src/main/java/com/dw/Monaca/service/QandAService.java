@@ -2,13 +2,14 @@ package com.dw.Monaca.service;
 
 import java.util.List;
 
+import com.dw.Monaca.dto.QandADto;
 import com.dw.Monaca.dto.ResponseDto;
 import com.dw.Monaca.model.QandA;
 
 // QandA 게시판
 public interface QandAService {
 	// 기능구현 예정
-	// 게시글 업로드
+
 	// 게시글 삭제
 	// 답변이 달리기 전까지만 게시글 수정가능(수정시 수정 된 게시글 알림(새로고침 필))
 	// 갯수제한 없이 무한 답변 가능
@@ -18,10 +19,12 @@ public interface QandAService {
 	// 삭제됐던 게시글 중 선택 또는 전체 게시글 복구 가능 (hidden = false)
 	// 답변 완료 시 답변 완료라고 표시 (새로고침 필)
 
-	public ResponseDto<Void> createQandA(QandA qanda);
+	// 게시글 업로드
+	public ResponseDto<Void> createQandA(QandADto qandaDto);
 
 	public ResponseDto<List<QandA>> getAllQandA();
 
-	public ResponseDto<Long> deteleQandA(Long id);
+	public ResponseDto<QandA> deleteQandA(Long id, Long userId);
+	
 
 }

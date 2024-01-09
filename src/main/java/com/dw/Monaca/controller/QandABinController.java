@@ -28,6 +28,5 @@ public class QandABinController {
 	@GetMapping("/api/qandabin")
 	public ResponseEntity<ResponseDto<List<QandABin>>> getAllQandABin() {
 		return new ResponseEntity<>(qandabinServiceImpl.getAllQandABin(), HttpStatus.OK);
-		// qandabinDto가 없기에 오류가 나는 듯?
 	}
 }

@@ -15,10 +15,8 @@ public interface QandABinService {
 	// 원하는 게시글 삭제
 	// 휴지통에 있는 전체 게시글 삭제 가능
 
-	public ResponseDto<Void> createQandABin(QandABin qandaBin);
-
 	public ResponseDto<List<QandABin>> getAllQandABin();
 
-	public ResponseDto<Long> deleteQandABin(Long id);
+//	public ResponseDto<Long> deleteQandABin(Long id);
 
 }

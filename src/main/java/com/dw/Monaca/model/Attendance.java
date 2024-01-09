@@ -1,7 +1,6 @@
 package com.dw.Monaca.model;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 import com.dw.Monaca.jwtauthority.model.User;
 
@@ -10,9 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -30,59 +26,49 @@ public class Attendance {
 	@ManyToOne
 	private User user;
 
-	@Column(nullable = false, updatable = false) // => //이 코드는 록으로 남아야하기 때문에 작성시점이 업데이트되면 안됨.(그래서 꼭 updatable을 사용하는게
-													// 좋음!)(DB에 주는 명령!)
-	@Temporal(TemporalType.TIMESTAMP) // Attendance 가 생성되는 시점을 기록으로 남기기 위해 쓰임
-	private LocalDateTime time_stamp;
-
-	@ManyToMany
-	@JoinTable(name = "candy_point", joinColumns = {
-			@JoinColumn(name = "attendance_id", referencedColumnName = "attendance_id") }, inverseJoinColumns = {
-					@JoinColumn(name = "candy_id", referencedColumnName = "candy_id") })
-	Set<Candy> candies;
+	@Column(nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime timeStamp;
 
 	public Attendance() {
 		super();
 	}
 
-	public Attendance(Long id, User user, LocalDateTime time_stamp, Set<Candy> candies) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.time_stamp = time_stamp;
-		this.candies = candies;
-	}
+public Attendance(Long id, User user, LocalDateTime timeStamp) {
+	super();
+	this.id = id;
+	this.user = user;
+	this.timeStamp = timeStamp;
+}
 
-	public Long getId() {
-		return id;
-	}
+public Long getId() {
+	return id;
+}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+public void setId(Long id) {
+	this.id = id;
+}
 
-	public User getUser() {
-		return user;
-	}
+public User getUser() {
+	return user;
+}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+public void setUser(User user) {
+	this.user = user;
+}
 
-	public LocalDateTime getTime_stamp() {
-		return time_stamp;
-	}
+String getLoginId() {
+    return user.getLoginId();
+}
 
-	public void setTime_stamp(LocalDateTime time_stamp) {
-		this.time_stamp = time_stamp;
-	}
+public LocalDateTime getTimeStamp() {
+	return timeStamp;
+}
 
-	public Set<Candy> getCandies() {
-		return candies;
-	}
+public void setTime_stamp(LocalDateTime timeStamp) {
+	this.timeStamp = timeStamp;
+}
 
-	public void setCandies(Set<Candy> candies) {
-		this.candies = candies;
-	}
+	
 
 }

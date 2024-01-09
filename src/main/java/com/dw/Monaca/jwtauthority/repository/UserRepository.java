@@ -20,5 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findOneWithWishlistByLoginId(String loginId);
 
 	User findByLoginId(String loginId);
+	
+	User findByLoginId(User user);
 
 }
