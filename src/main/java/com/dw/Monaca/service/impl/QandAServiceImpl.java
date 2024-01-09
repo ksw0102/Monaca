@@ -13,8 +13,10 @@ import com.dw.Monaca.enumStatus.ResultCode;
 import com.dw.Monaca.exception.InvalidRequestException;
 import com.dw.Monaca.jwtauthority.model.User;
 import com.dw.Monaca.jwtauthority.repository.UserRepository;
+import com.dw.Monaca.jwtauthority.util.SecurityUtil;
 import com.dw.Monaca.model.QandA;
 import com.dw.Monaca.model.QandABin;
+import com.dw.Monaca.repository.QandABinRepository;
 import com.dw.Monaca.repository.QandARepository;
 import com.dw.Monaca.service.QandAService;
 
@@ -27,11 +29,14 @@ public class QandAServiceImpl implements QandAService{
 	
 	private final QandARepository qandaRepository;
 	private final UserRepository userRepository;
+	private final QandABinRepository qandaBinRepository; 
+	
 
 	@Autowired
-	public QandAServiceImpl(QandARepository qandaRepository, UserRepository userRepository) {
+	public QandAServiceImpl(QandARepository qandaRepository, UserRepository userRepository, QandABinRepository qandaBinRepository) {
 		this.qandaRepository = qandaRepository;
 		this.userRepository = userRepository;
+		this.qandaBinRepository = qandaBinRepository;
 	}
 	
 	public ResponseDto<Void> createQandA(QandADto qandaDto) {
@@ -62,7 +67,7 @@ public class QandAServiceImpl implements QandAService{
 	}
 
 	@Override
-	public ResponseDto<QandA> deleteQandA(Long id, Long userId) {
+	public ResponseDto<QandA> deleteQandA(Long id) {
 	    Optional<QandA> optionalQandA = qandaRepository.findById(id);
 	    
 	    if (optionalQandA.isEmpty()) {
@@ -70,14 +75,14 @@ public class QandAServiceImpl implements QandAService{
 	    }
 	    QandA qandA = optionalQandA.get();
 
-	    if (!qandA.getUser().equals(userId)) {
+	    if (!qandA.getUser().getLoginId().equals(SecurityUtil.getCurrentLoginId())) {
 	       throw new InvalidRequestException("loginId", "삭제하려는 id와 글쓴이 id가 일치하지 않습니다.");
 	    	
-	    } else if (qandA.getUser().equals(userId)) {
+	    } else {
 	          
 	          QandABin qandaBin = new QandABin();
 	          qandaBin.setQandA(qandA);
-	          QandARepository.save(qandaBin);
+	          qandaBinRepository.save(qandaBin);
 	          
 	          qandA.setIs_hide(true);
 	          qandaRepository.save(qandA);

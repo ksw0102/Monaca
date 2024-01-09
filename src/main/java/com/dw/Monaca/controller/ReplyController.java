@@ -7,12 +7,16 @@
 //import org.springframework.http.ResponseEntity;
 //import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RestController;
 //
 //import com.dw.Monaca.dto.ResponseDto;
 //import com.dw.Monaca.model.Reply;
 //import com.dw.Monaca.service.impl.ReplyServiceImpl;
+//
+//import jakarta.validation.Valid;
 //
 //@RestController
 //@CrossOrigin(origins = "http://localhost:3000", methods = { RequestMethod.GET })
@@ -28,5 +32,12 @@
 //	public ResponseEntity<ResponseDto<List<Reply>>> getAllReply() {
 //		return new ResponseEntity<>(replyServiceImpl.getAllReply(), HttpStatus.OK);
 //		// replyDto 필요
+//	}
+//	
+//	@PostMapping("/api/reply")
+//	public ResponseDto<Void> createReply(@RequestBody @Valid Reply reply) {
+//		return new ResponseEntity<>(
+//				replyServiceImpl.createReply(reply),
+//				HttpStatus.CREATED);
 //	}
 //}

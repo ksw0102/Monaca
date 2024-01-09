@@ -7,10 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +24,7 @@ public class QandAController {
 
 	@Autowired
 	public QandAController(QandAServiceImpl qandaServiceImpl) {
-		this.qandaServiceImpl = qandaServiceImpl;
+ 		this.qandaServiceImpl = qandaServiceImpl;
 	}
 
 	@GetMapping("/api/qanda")
@@ -35,12 +33,12 @@ public class QandAController {
 		// qandaDto 필요
 	}
 	
-	@PutMapping("/api/qanda/delete/{id}/{userId}")
+	@PutMapping("/api/qanda/delete/{id}/")
 	@PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public ResponseEntity<ResponseDto<QandA>> deleteQandA(@PathVariable Long id, @PathVariable Long userId) {
+	public ResponseEntity<ResponseDto<QandA>> deleteQandA(@PathVariable Long id) {
 		
 		return new ResponseEntity<>(
-				qandaServiceImpl.deleteQandA(id, userId),
+				qandaServiceImpl.deleteQandA(id),
 				HttpStatus.OK);
 	}
 	

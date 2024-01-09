@@ -24,7 +24,7 @@ public interface QandAService {
 
 	public ResponseDto<List<QandA>> getAllQandA();
 
-	public ResponseDto<QandA> deleteQandA(Long id, Long userId);
+	public ResponseDto<QandA> deleteQandA(Long id);
 	
 
 }

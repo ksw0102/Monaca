@@ -8,8 +8,7 @@ import com.dw.Monaca.model.QandABin;
 public interface QandARepository extends JpaRepository<QandA, Long>{
 
 	static void save(QandABin qandaBin) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 }
