@@ -15,23 +15,22 @@ import com.dw.Monaca.model.Message;
 import com.dw.Monaca.service.impl.MessageServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.POST })
+@CrossOrigin(origins = "http://localhost:3000", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE,
+		RequestMethod.POST })
 public class MessageController {
 
-	 private final MessageServiceImpl messageService;
+	private final MessageServiceImpl messageServiceImpl;
 
-	    @Autowired
-	    public MessageController(MessageServiceImpl messageService) {
-	        this.messageService = messageService;
-	    }
-	    
-	    
+	@Autowired
+	public MessageController(MessageServiceImpl messageServiceImpl) {
+		this.messageServiceImpl = messageServiceImpl;
+	}
+
 	@PutMapping("/api/message/delete/{id}")
 	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public ResponseEntity<ResponseDto<Message>> deleteMessage(@PathVariable Long id) {
-		
-		return new ResponseEntity<>(messageService.deleteMessage(id),
-				HttpStatus.OK);
+
+		return new ResponseEntity<>(messageServiceImpl.deleteMessage(id), HttpStatus.OK);
 	}
-	
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dw.Monaca.dto.MessageDto;
 import com.dw.Monaca.dto.ResponseDto;
@@ -17,6 +18,10 @@ import com.dw.Monaca.repository.MessageBinRepository;
 import com.dw.Monaca.repository.MessageRepository;
 import com.dw.Monaca.service.MessageService;
 
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
 public class MessageServiceImpl implements MessageService {
 
 	private final MessageRepository messageRepository;

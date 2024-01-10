@@ -49,7 +49,6 @@ public class QandAServiceImpl implements QandAService{
 		qanda.setTitle(qandaDto.getTitle());
 		qanda.setText(qandaDto.getText());
 		qanda.setDisposablePw(qandaDto.getDisposablePw());
-		qanda.setIs_hide(qandaDto.isIs_hide());
 		
 		qandaRepository.save(qanda);
 		return new ResponseDto<>(ResultCode.SUCCESS.name(),null, "질문등록이 완료되었습니다.");

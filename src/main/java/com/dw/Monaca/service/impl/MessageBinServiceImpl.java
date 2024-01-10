@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import com.dw.Monaca.dto.ResponseDto;
 import com.dw.Monaca.enumStatus.ResultCode;
 import com.dw.Monaca.exception.InvalidRequestException;
+import com.dw.Monaca.jwtauthority.util.SecurityUtil;
 import com.dw.Monaca.model.MessageBin;
 import com.dw.Monaca.repository.MessageBinRepository;
 import com.dw.Monaca.repository.MessageRepository;
 import com.dw.Monaca.service.MessageBinService;
 
 import jakarta.transaction.Transactional;
-
 
 @Service
 @Transactional
@@ -34,12 +34,15 @@ public class MessageBinServiceImpl implements MessageBinService{
 		List<MessageBin> messageBins = messageBinRepository.findAll();
 		if (messageBins.isEmpty()) {
 			throw new InvalidRequestException("MessageABin Empty", "삭제한 쪽지가 존재하지 않습니다.");
-		}
+		} else if(!messageBins.getMessage().getUser.getLoginId().equals(SecurityUtil.getCurrentLoginId().get())) {
+			throw new InvalidRequestException("loginId", "접속하려는 유저 본인의 쪽지함이 아닙니다.");
+			
+		} else {
 		return new ResponseDto<>(ResultCode.SUCCESS.name(), messageBins, ResultCode.SUCCESS.getMsg());
 	}
 
 
 
 
-
 }
+	}
