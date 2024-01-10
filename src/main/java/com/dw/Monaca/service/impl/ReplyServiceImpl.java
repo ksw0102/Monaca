@@ -45,6 +45,7 @@ public class ReplyServiceImpl implements ReplyService {
 		}
 		
 		Reply replied = new Reply();
+	    replied.setQandA(replied.getQandA());
 		replied.setTitle(replied.getTitle());
 		replied.setText(replied.getText());
 		replied.setUser(replied.getUser());

@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dw.Monaca.dto.ResponseDto;
-import com.dw.Monaca.model.QandABin;
-import com.dw.Monaca.service.impl.QandABinServiceImpl;
+import com.dw.Monaca.model.MessageBin;
+import com.dw.Monaca.service.impl.MessageBinServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000", methods = { RequestMethod.GET })
-public class QandABinController {
-	private final QandABinServiceImpl qandabinServiceImpl;
+public class MessageBinController {
+	private final MessageBinServiceImpl messageBinServiceImpl;
 
 	@Autowired
-	public QandABinController(QandABinServiceImpl qandabinServiceImpl) {
-		this.qandabinServiceImpl = qandabinServiceImpl;
+	public MessageBinController(MessageBinServiceImpl messagebinServiceImpl) {
+		this.messageBinServiceImpl = messagebinServiceImpl;
 
 	}
 
-	@GetMapping("/api/qandabin")
-	public ResponseEntity<ResponseDto<List<QandABin>>> getAllQandABin() {
-		return new ResponseEntity<>(qandabinServiceImpl.getAllQandABin(), HttpStatus.OK);
+	@GetMapping("/api/messagebin")
+	public ResponseEntity<ResponseDto<List<MessageBin>>> getAllMessageBin() {
+		return new ResponseEntity<>(messageBinServiceImpl.getAllMessageBin(), HttpStatus.OK);
 	}
 }

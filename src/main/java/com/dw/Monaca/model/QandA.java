@@ -42,15 +42,14 @@ public class QandA {
 	@Column(name = "disposablePw", length = 10)
 	private String disposablePw;
 
-	@Column(name = "is_hide")
-	private boolean is_hide;
 
 	public QandA() {
 		super();
 	}
 
+
 	public QandA(Long id, User user, Lecture lecture, String title, String text, LocalDateTime createAt,
-			String disposablePw, boolean is_hide) {
+			String disposablePw) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -59,71 +58,77 @@ public class QandA {
 		this.text = text;
 		this.createAt = createAt;
 		this.disposablePw = disposablePw;
-		this.is_hide = is_hide;
 	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public User getUser() {
 		return user;
 	}
 
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 
 	public Lecture getLecture() {
 		return lecture;
 	}
 
+
 	public void setLecture(Lecture lecture) {
 		this.lecture = lecture;
 	}
+
 
 	public String getTitle() {
 		return title;
 	}
 
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 
 	public String getText() {
 		return text;
 	}
 
+
 	public void setText(String text) {
 		this.text = text;
 	}
+
 
 	public LocalDateTime getCreateAt() {
 		return createAt;
 	}
 
+
 	public void setCreateAt(LocalDateTime createAt) {
 		this.createAt = createAt;
 	}
+
 
 	public String getDisposablePw() {
 		return disposablePw;
 	}
 
+
 	public void setDisposablePw(String disposablePw) {
 		this.disposablePw = disposablePw;
 	}
 
-	public boolean isIs_hide() {
-		return is_hide;
-	}
-
-	public void setIs_hide(boolean is_hide) {
-		this.is_hide = is_hide;
-	}
-
+	
 }

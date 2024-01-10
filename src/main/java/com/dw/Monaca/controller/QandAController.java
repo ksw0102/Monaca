@@ -33,13 +33,6 @@ public class QandAController {
 		// qandaDto 필요
 	}
 	
-	@PutMapping("/api/qanda/delete/{id}/")
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public ResponseEntity<ResponseDto<QandA>> deleteQandA(@PathVariable Long id) {
-		
-		return new ResponseEntity<>(
-				qandaServiceImpl.deleteQandA(id),
-				HttpStatus.OK);
-	}
+	
 	
 }

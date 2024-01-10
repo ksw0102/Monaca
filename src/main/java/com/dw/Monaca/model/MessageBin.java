@@ -9,25 +9,25 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "q_and_a_bin")
-public class QandABin {
+@Table(name = "message_bin")
+public class MessageBin {
 
 	@Id
-	@Column(name = "q_and_a_bin_id")
+	@Column(name = "message_bin_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
-	private QandA qandA;
+	private Message message;
 
-	public QandABin() {
+	public MessageBin() {
 		super();
 	}
 
-	public QandABin(Long id, QandA qandA) {
+	public MessageBin(Long id, Message message) {
 		super();
 		this.id = id;
-		this.qandA = qandA;
+		this.message = message;
 	}
 
 	public Long getId() {
@@ -38,12 +38,14 @@ public class QandABin {
 		this.id = id;
 	}
 
-	public QandA getQandA() {
-		return qandA;
+	public Message getMessage() {
+		return message;
 	}
 
-	public void setQandA(QandA qandA) {
-		this.qandA = qandA;
+	public void setMessage(Message message) {
+		this.message = message;
 	}
+
+	
 
 }

@@ -53,7 +53,7 @@ public class SecurityConfig {
 						.requestMatchers("/api/authenticate").permitAll()
 								.requestMatchers("/api/signup").permitAll() 
 								.requestMatchers("/api/lecture").permitAll()
-								.requestMatchers("/api/qanda").permitAll()
+//								.requestMatchers("/api/message/**").permitAll()
 //								.requestMatchers("/api/qanda/**").permitAll()
 								.anyRequest().authenticated() // 이새기들은 필수!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				)
