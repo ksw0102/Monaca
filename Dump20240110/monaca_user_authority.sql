@@ -16,37 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `q_and_a`
+-- Table structure for table `user_authority`
 --
 
-DROP TABLE IF EXISTS `q_and_a`;
+DROP TABLE IF EXISTS `user_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `q_and_a` (
-  `q_and_a_id` bigint NOT NULL AUTO_INCREMENT,
-  `create_at` datetime(6) NOT NULL,
-  `disposable_pw` varchar(10) DEFAULT NULL,
-  `is_hide` bit(1) DEFAULT NULL,
-  `text` varchar(1000) DEFAULT NULL,
-  `title` varchar(50) DEFAULT NULL,
-  `lecture_lecture_id` bigint DEFAULT NULL,
-  `user_user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`q_and_a_id`),
-  KEY `FKqq46symjxxhde4tgctk00juhn` (`lecture_lecture_id`),
-  KEY `FK3k11vju4uo6n0eoydrqf16q7n` (`user_user_id`),
-  CONSTRAINT `FK3k11vju4uo6n0eoydrqf16q7n` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `FKqq46symjxxhde4tgctk00juhn` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `user_authority` (
+  `user_id` bigint NOT NULL,
+  `authority_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`,`authority_name`),
+  KEY `FK6ktglpl5mjosa283rvken2py5` (`authority_name`),
+  CONSTRAINT `FK6ktglpl5mjosa283rvken2py5` FOREIGN KEY (`authority_name`) REFERENCES `authority` (`authority_name`),
+  CONSTRAINT `FKscuh0v3acg0xp6skwcvuynl6x` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `q_and_a`
+-- Dumping data for table `user_authority`
 --
 
-LOCK TABLES `q_and_a` WRITE;
-/*!40000 ALTER TABLE `q_and_a` DISABLE KEYS */;
-INSERT INTO `q_and_a` VALUES (1,'2024-01-09 00:00:00.000000','monaca',_binary '\0','안녕하세요 질문 있습니다.','질문1',1,3),(2,'2024-01-09 00:00:00.000000','monaca',_binary '\0','안녕하세요 질문 있습니다2.','질문2',1,3);
-/*!40000 ALTER TABLE `q_and_a` ENABLE KEYS */;
+LOCK TABLES `user_authority` WRITE;
+/*!40000 ALTER TABLE `user_authority` DISABLE KEYS */;
+INSERT INTO `user_authority` VALUES (3,'ROLE_ADMIN'),(4,'ROLE_PROFESSOR'),(2,'ROLE_USER'),(3,'ROLE_USER'),(4,'ROLE_USER'),(5,'ROLE_USER');
+/*!40000 ALTER TABLE `user_authority` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:03

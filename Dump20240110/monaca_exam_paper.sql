@@ -16,35 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `lecture`
+-- Table structure for table `exam_paper`
 --
 
-DROP TABLE IF EXISTS `lecture`;
+DROP TABLE IF EXISTS `exam_paper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lecture` (
-  `lecture_id` bigint NOT NULL AUTO_INCREMENT,
-  `image` varchar(500) DEFAULT NULL,
-  `lecture_description` varchar(500) DEFAULT NULL,
-  `lecture_name` varchar(50) DEFAULT NULL,
-  `lecture_play_time` varchar(100) DEFAULT NULL,
-  `price` varchar(20) DEFAULT NULL,
-  `video` varchar(255) DEFAULT NULL,
-  `lecture_category_lecture_category_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`lecture_id`),
-  KEY `FK1ybu7nyhy9g8qyhts2ttgnqr7` (`lecture_category_lecture_category_id`),
-  CONSTRAINT `FK1ybu7nyhy9g8qyhts2ttgnqr7` FOREIGN KEY (`lecture_category_lecture_category_id`) REFERENCES `lecture_category` (`lecture_category_id`)
+CREATE TABLE `exam_paper` (
+  `exam_paper_id` bigint NOT NULL AUTO_INCREMENT,
+  `create_at` datetime(6) NOT NULL,
+  `exam_image` varchar(500) DEFAULT NULL,
+  `exam_text` varchar(100) DEFAULT NULL,
+  `is_checked` bit(1) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `lecture_lecture_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`exam_paper_id`),
+  KEY `FKdkk05mmtanj6c2gu7a66guhe7` (`lecture_lecture_id`),
+  CONSTRAINT `FKdkk05mmtanj6c2gu7a66guhe7` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lecture`
+-- Dumping data for table `exam_paper`
 --
 
-LOCK TABLES `lecture` WRITE;
-/*!40000 ALTER TABLE `lecture` DISABLE KEYS */;
-INSERT INTO `lecture` VALUES (1,'image.jpg','키오스크 사용법','키오스크','10:00','0원','video.mp4',1),(2,'image2.jpg','웹사이트 사용법','웹사이트','10:00','0원','video2.mp4',2);
-/*!40000 ALTER TABLE `lecture` ENABLE KEYS */;
+LOCK TABLES `exam_paper` WRITE;
+/*!40000 ALTER TABLE `exam_paper` DISABLE KEYS */;
+INSERT INTO `exam_paper` VALUES (1,'2024-01-08 00:00:00.000000','exam1.jpg','이중 올바른 사용법은?',_binary '','키오스크 1회',1),(2,'2024-01-08 00:00:00.000000','exam2.jpg','이중 올바른 사용법은?',_binary '','웹사이트 1회',2);
+/*!40000 ALTER TABLE `exam_paper` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:11
+-- Dump completed on 2024-01-10 10:00:03

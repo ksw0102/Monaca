@@ -16,34 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `exam_paper`
+-- Table structure for table `message`
 --
 
-DROP TABLE IF EXISTS `exam_paper`;
+DROP TABLE IF EXISTS `message`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exam_paper` (
-  `exam_paper_id` bigint NOT NULL AUTO_INCREMENT,
-  `create_at` datetime(6) NOT NULL,
-  `exam_image` varchar(500) DEFAULT NULL,
-  `exam_text` varchar(100) DEFAULT NULL,
-  `is_checked` bit(1) DEFAULT NULL,
-  `title` varchar(50) DEFAULT NULL,
-  `lecture_lecture_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`exam_paper_id`),
-  KEY `FKdkk05mmtanj6c2gu7a66guhe7` (`lecture_lecture_id`),
-  CONSTRAINT `FKdkk05mmtanj6c2gu7a66guhe7` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`)
+CREATE TABLE `message` (
+  `message_id` bigint NOT NULL AUTO_INCREMENT,
+  `create_at` datetime(6) DEFAULT NULL,
+  `is_hide` bit(1) DEFAULT NULL,
+  `reciever` varchar(255) DEFAULT NULL,
+  `text` varchar(150) DEFAULT NULL,
+  `title` varchar(20) DEFAULT NULL,
+  `user_user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`message_id`),
+  KEY `FK189wqo478fgy6g9vaijngg1e4` (`user_user_id`),
+  CONSTRAINT `FK189wqo478fgy6g9vaijngg1e4` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `exam_paper`
+-- Dumping data for table `message`
 --
 
-LOCK TABLES `exam_paper` WRITE;
-/*!40000 ALTER TABLE `exam_paper` DISABLE KEYS */;
-INSERT INTO `exam_paper` VALUES (1,'2024-01-08 00:00:00.000000','exam1.jpg','이중 올바른 사용법은?',_binary '','키오스크 1회',1),(2,'2024-01-08 00:00:00.000000','exam2.jpg','이중 올바른 사용법은?',_binary '','웹사이트 1회',2);
-/*!40000 ALTER TABLE `exam_paper` ENABLE KEYS */;
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (1,'2024-01-10 00:00:00.000000',_binary '\0','professor123','교수님 저 말씀드릴게 있습니다.','안녕하세요',3),(2,'2024-01-10 00:00:00.000000',_binary '\0','professor123','교수님 저 말씀드릴게 있습니다.','안녕하세요',3);
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:03

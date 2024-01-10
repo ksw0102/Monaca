@@ -16,28 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `q_and_a_bin`
+-- Table structure for table `item_shop`
 --
 
-DROP TABLE IF EXISTS `q_and_a_bin`;
+DROP TABLE IF EXISTS `item_shop`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `q_and_a_bin` (
-  `q_and_a_bin_id` bigint NOT NULL AUTO_INCREMENT,
-  `qanda_q_and_a_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`q_and_a_bin_id`),
-  KEY `FK476vth6cnbrbi1e7pyduo6dje` (`qanda_q_and_a_id`),
-  CONSTRAINT `FK476vth6cnbrbi1e7pyduo6dje` FOREIGN KEY (`qanda_q_and_a_id`) REFERENCES `q_and_a` (`q_and_a_id`)
+CREATE TABLE `item_shop` (
+  `item_shop_id` bigint NOT NULL AUTO_INCREMENT,
+  `image` varchar(500) DEFAULT NULL,
+  `item_name` varchar(50) DEFAULT NULL,
+  `price` varchar(50) DEFAULT NULL,
+  `item_shop_category_item_category_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`item_shop_id`),
+  KEY `FK553t3xi6etljh01tr37173cwp` (`item_shop_category_item_category_id`),
+  CONSTRAINT `FK553t3xi6etljh01tr37173cwp` FOREIGN KEY (`item_shop_category_item_category_id`) REFERENCES `item_category` (`item_category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `q_and_a_bin`
+-- Dumping data for table `item_shop`
 --
 
-LOCK TABLES `q_and_a_bin` WRITE;
-/*!40000 ALTER TABLE `q_and_a_bin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `q_and_a_bin` ENABLE KEYS */;
+LOCK TABLES `item_shop` WRITE;
+/*!40000 ALTER TABLE `item_shop` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:11
+-- Dump completed on 2024-01-10 10:00:04

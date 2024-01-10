@@ -16,29 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `wishlist`
+-- Table structure for table `material`
 --
 
-DROP TABLE IF EXISTS `wishlist`;
+DROP TABLE IF EXISTS `material`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `wishlist` (
-  `user_id` bigint NOT NULL,
-  `lecture_id)` bigint NOT NULL,
-  PRIMARY KEY (`user_id`,`lecture_id)`),
-  KEY `FKjy8f0wxwaqyl6n3kcjnq6cfb` (`lecture_id)`),
-  CONSTRAINT `FK6e4b6ubvjarad3f5g8wqhec` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `FKjy8f0wxwaqyl6n3kcjnq6cfb` FOREIGN KEY (`lecture_id)`) REFERENCES `lecture` (`lecture_id`)
+CREATE TABLE `material` (
+  `material_id` bigint NOT NULL AUTO_INCREMENT,
+  `create_at` datetime(6) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `is_reservation` bit(1) DEFAULT NULL,
+  `text` varchar(5000) DEFAULT NULL,
+  `title` varchar(30) DEFAULT NULL,
+  `lecture_lecture_id` bigint DEFAULT NULL,
+  `user_user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`material_id`),
+  KEY `FKiadivi0td8hg60wtu4w9yx1vy` (`lecture_lecture_id`),
+  KEY `FK1arfrymdrxkcrcl0ua97lcgcd` (`user_user_id`),
+  CONSTRAINT `FK1arfrymdrxkcrcl0ua97lcgcd` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `FKiadivi0td8hg60wtu4w9yx1vy` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `wishlist`
+-- Dumping data for table `material`
 --
 
-LOCK TABLES `wishlist` WRITE;
-/*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
+LOCK TABLES `material` WRITE;
+/*!40000 ALTER TABLE `material` DISABLE KEYS */;
+/*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:10
+-- Dump completed on 2024-01-10 10:00:04

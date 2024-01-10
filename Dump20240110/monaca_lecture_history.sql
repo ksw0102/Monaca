@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `item_cart`
+-- Table structure for table `lecture_history`
 --
 
-DROP TABLE IF EXISTS `item_cart`;
+DROP TABLE IF EXISTS `lecture_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `item_cart` (
-  `item_shop_id` bigint NOT NULL,
-  `user_id` bigint NOT NULL,
-  PRIMARY KEY (`item_shop_id`,`user_id`),
-  KEY `FK4rhkpvrj655carmj81mo4feds` (`user_id`),
-  CONSTRAINT `FK4rhkpvrj655carmj81mo4feds` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `FKahjj2j7s5cjiicra9iow6ho88` FOREIGN KEY (`item_shop_id`) REFERENCES `item_shop` (`item_shop_id`)
+CREATE TABLE `lecture_history` (
+  `lecture_history_id` bigint NOT NULL AUTO_INCREMENT,
+  `is_completed` bit(1) DEFAULT NULL,
+  `last_date` varchar(50) DEFAULT NULL,
+  `lecture_lecture_id` bigint DEFAULT NULL,
+  `user_user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`lecture_history_id`),
+  KEY `FKae6jw4p8f6u7xp47w17x8lr2t` (`lecture_lecture_id`),
+  KEY `FKnbjhi4xg6pc1lyqmma3a7ue7c` (`user_user_id`),
+  CONSTRAINT `FKae6jw4p8f6u7xp47w17x8lr2t` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`),
+  CONSTRAINT `FKnbjhi4xg6pc1lyqmma3a7ue7c` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `item_cart`
+-- Dumping data for table `lecture_history`
 --
 
-LOCK TABLES `item_cart` WRITE;
-/*!40000 ALTER TABLE `item_cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_cart` ENABLE KEYS */;
+LOCK TABLES `lecture_history` WRITE;
+/*!40000 ALTER TABLE `lecture_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lecture_history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:05

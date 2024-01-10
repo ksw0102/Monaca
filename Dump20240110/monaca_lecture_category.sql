@@ -16,33 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `reply`
+-- Table structure for table `lecture_category`
 --
 
-DROP TABLE IF EXISTS `reply`;
+DROP TABLE IF EXISTS `lecture_category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `reply` (
-  `reply_id` bigint NOT NULL AUTO_INCREMENT,
-  `text` varchar(5000) DEFAULT NULL,
-  `title` varchar(30) DEFAULT NULL,
-  `qanda_q_and_a_id` bigint DEFAULT NULL,
-  `user_user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`reply_id`),
-  KEY `FKds0nvyakaubulc7fslxe04vu9` (`qanda_q_and_a_id`),
-  KEY `FK4vyk3d04m5sfieguyl44umql5` (`user_user_id`),
-  CONSTRAINT `FK4vyk3d04m5sfieguyl44umql5` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `FKds0nvyakaubulc7fslxe04vu9` FOREIGN KEY (`qanda_q_and_a_id`) REFERENCES `q_and_a` (`q_and_a_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `lecture_category` (
+  `lecture_category_id` bigint NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`lecture_category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `reply`
+-- Dumping data for table `lecture_category`
 --
 
-LOCK TABLES `reply` WRITE;
-/*!40000 ALTER TABLE `reply` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reply` ENABLE KEYS */;
+LOCK TABLES `lecture_category` WRITE;
+/*!40000 ALTER TABLE `lecture_category` DISABLE KEYS */;
+INSERT INTO `lecture_category` VALUES (1,'키오스크'),(2,'웹사이트'),(3,'모바일기기'),(4,'국가 복지 및 민원');
+/*!40000 ALTER TABLE `lecture_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:10
+-- Dump completed on 2024-01-10 10:00:05

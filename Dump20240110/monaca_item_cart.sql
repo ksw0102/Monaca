@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_item`
+-- Table structure for table `item_cart`
 --
 
-DROP TABLE IF EXISTS `user_item`;
+DROP TABLE IF EXISTS `item_cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_item` (
-  `user_item_id` bigint NOT NULL AUTO_INCREMENT,
-  `is_wearing` bit(1) DEFAULT NULL,
-  `item_shop_item_shop_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`user_item_id`),
-  KEY `FKi9wh1x7v9fnfocom2e5lulsq2` (`item_shop_item_shop_id`),
-  CONSTRAINT `FKi9wh1x7v9fnfocom2e5lulsq2` FOREIGN KEY (`item_shop_item_shop_id`) REFERENCES `item_shop` (`item_shop_id`)
+CREATE TABLE `item_cart` (
+  `item_shop_id` bigint NOT NULL,
+  `user_id` bigint NOT NULL,
+  PRIMARY KEY (`item_shop_id`,`user_id`),
+  KEY `FK4rhkpvrj655carmj81mo4feds` (`user_id`),
+  CONSTRAINT `FK4rhkpvrj655carmj81mo4feds` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `FKahjj2j7s5cjiicra9iow6ho88` FOREIGN KEY (`item_shop_id`) REFERENCES `item_shop` (`item_shop_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_item`
+-- Dumping data for table `item_cart`
 --
 
-LOCK TABLES `user_item` WRITE;
-/*!40000 ALTER TABLE `user_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_item` ENABLE KEYS */;
+LOCK TABLES `item_cart` WRITE;
+/*!40000 ALTER TABLE `item_cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:11
+-- Dump completed on 2024-01-10 10:00:05

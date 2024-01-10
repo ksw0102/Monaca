@@ -16,36 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `material`
+-- Table structure for table `reply`
 --
 
-DROP TABLE IF EXISTS `material`;
+DROP TABLE IF EXISTS `reply`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `material` (
-  `material_id` bigint NOT NULL AUTO_INCREMENT,
-  `create_at` datetime(6) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `is_reservation` bit(1) DEFAULT NULL,
+CREATE TABLE `reply` (
+  `reply_id` bigint NOT NULL AUTO_INCREMENT,
   `text` varchar(5000) DEFAULT NULL,
   `title` varchar(30) DEFAULT NULL,
-  `lecture_lecture_id` bigint DEFAULT NULL,
+  `qanda_q_and_a_id` bigint DEFAULT NULL,
   `user_user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`material_id`),
-  KEY `FKiadivi0td8hg60wtu4w9yx1vy` (`lecture_lecture_id`),
-  KEY `FK1arfrymdrxkcrcl0ua97lcgcd` (`user_user_id`),
-  CONSTRAINT `FK1arfrymdrxkcrcl0ua97lcgcd` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `FKiadivi0td8hg60wtu4w9yx1vy` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`reply_id`),
+  KEY `FKds0nvyakaubulc7fslxe04vu9` (`qanda_q_and_a_id`),
+  KEY `FK4vyk3d04m5sfieguyl44umql5` (`user_user_id`),
+  CONSTRAINT `FK4vyk3d04m5sfieguyl44umql5` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `FKds0nvyakaubulc7fslxe04vu9` FOREIGN KEY (`qanda_q_and_a_id`) REFERENCES `q_and_a` (`q_and_a_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `material`
+-- Dumping data for table `reply`
 --
 
-LOCK TABLES `material` WRITE;
-/*!40000 ALTER TABLE `material` DISABLE KEYS */;
-/*!40000 ALTER TABLE `material` ENABLE KEYS */;
+LOCK TABLES `reply` WRITE;
+/*!40000 ALTER TABLE `reply` DISABLE KEYS */;
+INSERT INTO `reply` VALUES (1,'답변입니다.','답변',1,4),(2,'답변입니다2.','답변2',2,4);
+/*!40000 ALTER TABLE `reply` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:10
+-- Dump completed on 2024-01-10 10:00:04

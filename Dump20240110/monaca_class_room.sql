@@ -16,31 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `item_shop`
+-- Table structure for table `class_room`
 --
 
-DROP TABLE IF EXISTS `item_shop`;
+DROP TABLE IF EXISTS `class_room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `item_shop` (
-  `item_shop_id` bigint NOT NULL AUTO_INCREMENT,
-  `image` varchar(500) DEFAULT NULL,
-  `item_name` varchar(50) DEFAULT NULL,
-  `price` varchar(50) DEFAULT NULL,
-  `item_shop_category_item_category_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`item_shop_id`),
-  KEY `FK553t3xi6etljh01tr37173cwp` (`item_shop_category_item_category_id`),
-  CONSTRAINT `FK553t3xi6etljh01tr37173cwp` FOREIGN KEY (`item_shop_category_item_category_id`) REFERENCES `item_category` (`item_category_id`)
+CREATE TABLE `class_room` (
+  `classroom_id` bigint NOT NULL AUTO_INCREMENT,
+  `is_completed` bit(1) DEFAULT NULL,
+  `progress_rate` double DEFAULT NULL,
+  `lecture_lecture_id` bigint DEFAULT NULL,
+  `user_user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`classroom_id`),
+  KEY `FKg7yx6mnll6290fa4vlu05mrln` (`lecture_lecture_id`),
+  KEY `FKiabhtjjjo4w251wlpf28prggq` (`user_user_id`),
+  CONSTRAINT `FKg7yx6mnll6290fa4vlu05mrln` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`),
+  CONSTRAINT `FKiabhtjjjo4w251wlpf28prggq` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `item_shop`
+-- Dumping data for table `class_room`
 --
 
-LOCK TABLES `item_shop` WRITE;
-/*!40000 ALTER TABLE `item_shop` DISABLE KEYS */;
-/*!40000 ALTER TABLE `item_shop` ENABLE KEYS */;
+LOCK TABLES `class_room` WRITE;
+/*!40000 ALTER TABLE `class_room` DISABLE KEYS */;
+/*!40000 ALTER TABLE `class_room` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:10
+-- Dump completed on 2024-01-10 10:00:05

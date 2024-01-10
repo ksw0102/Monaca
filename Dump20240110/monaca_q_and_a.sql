@@ -16,29 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_character`
+-- Table structure for table `q_and_a`
 --
 
-DROP TABLE IF EXISTS `user_character`;
+DROP TABLE IF EXISTS `q_and_a`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_character` (
-  `user_item_id` bigint NOT NULL,
-  `character_id` bigint NOT NULL,
-  PRIMARY KEY (`user_item_id`,`character_id`),
-  KEY `FKqif86qwg97ofk8fmqjqeriuux` (`character_id`),
-  CONSTRAINT `FKl1kt3s7jfl8nqyvbkolkbrhla` FOREIGN KEY (`user_item_id`) REFERENCES `user_item` (`user_item_id`),
-  CONSTRAINT `FKqif86qwg97ofk8fmqjqeriuux` FOREIGN KEY (`character_id`) REFERENCES `characters` (`character_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `q_and_a` (
+  `q_and_a_id` bigint NOT NULL AUTO_INCREMENT,
+  `create_at` datetime(6) NOT NULL,
+  `disposable_pw` varchar(10) DEFAULT NULL,
+  `is_hide` bit(1) DEFAULT NULL,
+  `text` varchar(1000) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `lecture_lecture_id` bigint DEFAULT NULL,
+  `user_user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`q_and_a_id`),
+  KEY `FKqq46symjxxhde4tgctk00juhn` (`lecture_lecture_id`),
+  KEY `FK3k11vju4uo6n0eoydrqf16q7n` (`user_user_id`),
+  CONSTRAINT `FK3k11vju4uo6n0eoydrqf16q7n` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `FKqq46symjxxhde4tgctk00juhn` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_character`
+-- Dumping data for table `q_and_a`
 --
 
-LOCK TABLES `user_character` WRITE;
-/*!40000 ALTER TABLE `user_character` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_character` ENABLE KEYS */;
+LOCK TABLES `q_and_a` WRITE;
+/*!40000 ALTER TABLE `q_and_a` DISABLE KEYS */;
+INSERT INTO `q_and_a` VALUES (1,'2024-01-09 00:00:00.000000','monaca',_binary '','안녕하세요 질문 있습니다.','질문1',1,3),(2,'2024-01-09 00:00:00.000000','monaca',_binary '\0','안녕하세요 질문 있습니다2.','질문2',1,3);
+/*!40000 ALTER TABLE `q_and_a` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:05

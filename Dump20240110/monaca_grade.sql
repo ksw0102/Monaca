@@ -16,33 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `class_room`
+-- Table structure for table `grade`
 --
 
-DROP TABLE IF EXISTS `class_room`;
+DROP TABLE IF EXISTS `grade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `class_room` (
-  `classroom_id` bigint NOT NULL AUTO_INCREMENT,
-  `is_completed` bit(1) DEFAULT NULL,
-  `progress_rate` double DEFAULT NULL,
-  `lecture_lecture_id` bigint DEFAULT NULL,
-  `user_user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`classroom_id`),
-  KEY `FKg7yx6mnll6290fa4vlu05mrln` (`lecture_lecture_id`),
-  KEY `FKiabhtjjjo4w251wlpf28prggq` (`user_user_id`),
-  CONSTRAINT `FKg7yx6mnll6290fa4vlu05mrln` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`),
-  CONSTRAINT `FKiabhtjjjo4w251wlpf28prggq` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `grade` (
+  `grade_id` bigint NOT NULL AUTO_INCREMENT,
+  `grade_name` varchar(3) DEFAULT NULL,
+  `standard` int DEFAULT NULL,
+  PRIMARY KEY (`grade_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `class_room`
+-- Dumping data for table `grade`
 --
 
-LOCK TABLES `class_room` WRITE;
-/*!40000 ALTER TABLE `class_room` DISABLE KEYS */;
-/*!40000 ALTER TABLE `class_room` ENABLE KEYS */;
+LOCK TABLES `grade` WRITE;
+/*!40000 ALTER TABLE `grade` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grade` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:05

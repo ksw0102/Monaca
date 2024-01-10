@@ -16,28 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `characters`
+-- Table structure for table `user_item`
 --
 
-DROP TABLE IF EXISTS `characters`;
+DROP TABLE IF EXISTS `user_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `characters` (
-  `character_id` bigint NOT NULL AUTO_INCREMENT,
-  `character_name` varchar(20) DEFAULT NULL,
-  `image` varchar(500) DEFAULT NULL,
-  `species` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`character_id`)
+CREATE TABLE `user_item` (
+  `user_item_id` bigint NOT NULL AUTO_INCREMENT,
+  `is_wearing` bit(1) DEFAULT NULL,
+  `item_shop_item_shop_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`user_item_id`),
+  KEY `FKi9wh1x7v9fnfocom2e5lulsq2` (`item_shop_item_shop_id`),
+  CONSTRAINT `FKi9wh1x7v9fnfocom2e5lulsq2` FOREIGN KEY (`item_shop_item_shop_id`) REFERENCES `item_shop` (`item_shop_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `characters`
+-- Dumping data for table `user_item`
 --
 
-LOCK TABLES `characters` WRITE;
-/*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-/*!40000 ALTER TABLE `characters` ENABLE KEYS */;
+LOCK TABLES `user_item` WRITE;
+/*!40000 ALTER TABLE `user_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:11
+-- Dump completed on 2024-01-10 10:00:04

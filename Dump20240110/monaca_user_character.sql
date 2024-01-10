@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `lecture_cart`
+-- Table structure for table `user_character`
 --
 
-DROP TABLE IF EXISTS `lecture_cart`;
+DROP TABLE IF EXISTS `user_character`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lecture_cart` (
-  `user_id` bigint NOT NULL,
-  `lecture_id` bigint NOT NULL,
-  PRIMARY KEY (`user_id`,`lecture_id`),
-  KEY `FK9bcgllnsyir6bhparx4fhcfa4` (`lecture_id`),
-  CONSTRAINT `FK9bcgllnsyir6bhparx4fhcfa4` FOREIGN KEY (`lecture_id`) REFERENCES `lecture` (`lecture_id`),
-  CONSTRAINT `FKkrv34t2q61qh642020712tnbm` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `user_character` (
+  `user_item_id` bigint NOT NULL,
+  `character_id` bigint NOT NULL,
+  PRIMARY KEY (`user_item_id`,`character_id`),
+  KEY `FKqif86qwg97ofk8fmqjqeriuux` (`character_id`),
+  CONSTRAINT `FKl1kt3s7jfl8nqyvbkolkbrhla` FOREIGN KEY (`user_item_id`) REFERENCES `user_item` (`user_item_id`),
+  CONSTRAINT `FKqif86qwg97ofk8fmqjqeriuux` FOREIGN KEY (`character_id`) REFERENCES `characters` (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lecture_cart`
+-- Dumping data for table `user_character`
 --
 
-LOCK TABLES `lecture_cart` WRITE;
-/*!40000 ALTER TABLE `lecture_cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lecture_cart` ENABLE KEYS */;
+LOCK TABLES `user_character` WRITE;
+/*!40000 ALTER TABLE `user_character` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_character` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:04

@@ -16,27 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `candy`
+-- Table structure for table `wishlist`
 --
 
-DROP TABLE IF EXISTS `candy`;
+DROP TABLE IF EXISTS `wishlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `candy` (
-  `candy_id` bigint NOT NULL AUTO_INCREMENT,
-  `candy_name` varchar(10) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`candy_id`)
+CREATE TABLE `wishlist` (
+  `user_id` bigint NOT NULL,
+  `lecture_id)` bigint NOT NULL,
+  PRIMARY KEY (`user_id`,`lecture_id)`),
+  KEY `FKjy8f0wxwaqyl6n3kcjnq6cfb` (`lecture_id)`),
+  CONSTRAINT `FK6e4b6ubvjarad3f5g8wqhec` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `FKjy8f0wxwaqyl6n3kcjnq6cfb` FOREIGN KEY (`lecture_id)`) REFERENCES `lecture` (`lecture_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `candy`
+-- Dumping data for table `wishlist`
 --
 
-LOCK TABLES `candy` WRITE;
-/*!40000 ALTER TABLE `candy` DISABLE KEYS */;
-/*!40000 ALTER TABLE `candy` ENABLE KEYS */;
+LOCK TABLES `wishlist` WRITE;
+/*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:10
+-- Dump completed on 2024-01-10 10:00:04

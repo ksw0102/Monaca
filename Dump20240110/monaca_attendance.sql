@@ -16,32 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `message`
+-- Table structure for table `attendance`
 --
 
-DROP TABLE IF EXISTS `message`;
+DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `message` (
-  `message_id` bigint NOT NULL AUTO_INCREMENT,
-  `create_at` varchar(255) DEFAULT NULL,
-  `reciever` varchar(255) DEFAULT NULL,
-  `text` varchar(150) DEFAULT NULL,
-  `title` varchar(20) DEFAULT NULL,
+CREATE TABLE `attendance` (
+  `attendance_id` bigint NOT NULL AUTO_INCREMENT,
+  `time_stamp` datetime(6) NOT NULL,
   `user_user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`message_id`),
-  KEY `FK189wqo478fgy6g9vaijngg1e4` (`user_user_id`),
-  CONSTRAINT `FK189wqo478fgy6g9vaijngg1e4` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
+  `login_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`attendance_id`),
+  KEY `FKp85vv8ywqt30kf8wposdrhaa2` (`user_user_id`),
+  CONSTRAINT `FKp85vv8ywqt30kf8wposdrhaa2` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `message`
+-- Dumping data for table `attendance`
 --
 
-LOCK TABLES `message` WRITE;
-/*!40000 ALTER TABLE `message` DISABLE KEYS */;
-/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+LOCK TABLES `attendance` WRITE;
+/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:12
+-- Dump completed on 2024-01-10 10:00:03

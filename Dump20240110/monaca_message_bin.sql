@@ -16,33 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `lecture_history`
+-- Table structure for table `message_bin`
 --
 
-DROP TABLE IF EXISTS `lecture_history`;
+DROP TABLE IF EXISTS `message_bin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lecture_history` (
-  `lecture_history_id` bigint NOT NULL AUTO_INCREMENT,
-  `is_completed` bit(1) DEFAULT NULL,
-  `last_date` varchar(50) DEFAULT NULL,
-  `lecture_lecture_id` bigint DEFAULT NULL,
-  `user_user_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`lecture_history_id`),
-  KEY `FKae6jw4p8f6u7xp47w17x8lr2t` (`lecture_lecture_id`),
-  KEY `FKnbjhi4xg6pc1lyqmma3a7ue7c` (`user_user_id`),
-  CONSTRAINT `FKae6jw4p8f6u7xp47w17x8lr2t` FOREIGN KEY (`lecture_lecture_id`) REFERENCES `lecture` (`lecture_id`),
-  CONSTRAINT `FKnbjhi4xg6pc1lyqmma3a7ue7c` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `message_bin` (
+  `message_bin_id` bigint NOT NULL AUTO_INCREMENT,
+  `message_message_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`message_bin_id`),
+  KEY `FKkswdv4ia5nklsvhh9po8tmmdm` (`message_message_id`),
+  CONSTRAINT `FKkswdv4ia5nklsvhh9po8tmmdm` FOREIGN KEY (`message_message_id`) REFERENCES `message` (`message_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lecture_history`
+-- Dumping data for table `message_bin`
 --
 
-LOCK TABLES `lecture_history` WRITE;
-/*!40000 ALTER TABLE `lecture_history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lecture_history` ENABLE KEYS */;
+LOCK TABLES `message_bin` WRITE;
+/*!40000 ALTER TABLE `message_bin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `message_bin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:11
+-- Dump completed on 2024-01-10 10:00:03

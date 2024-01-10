@@ -16,30 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_authority`
+-- Table structure for table `examination`
 --
 
-DROP TABLE IF EXISTS `user_authority`;
+DROP TABLE IF EXISTS `examination`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_authority` (
-  `user_id` bigint NOT NULL,
-  `authority_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`user_id`,`authority_name`),
-  KEY `FK6ktglpl5mjosa283rvken2py5` (`authority_name`),
-  CONSTRAINT `FK6ktglpl5mjosa283rvken2py5` FOREIGN KEY (`authority_name`) REFERENCES `authority` (`authority_name`),
-  CONSTRAINT `FKscuh0v3acg0xp6skwcvuynl6x` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `examination` (
+  `examination_id` bigint NOT NULL AUTO_INCREMENT,
+  `answer_text` varchar(500) DEFAULT NULL,
+  `score` varchar(5) DEFAULT NULL,
+  `submit_date` varchar(50) DEFAULT NULL,
+  `exam_paper_exam_paper_id` bigint DEFAULT NULL,
+  `grade_grade_id` bigint DEFAULT NULL,
+  `user_user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`examination_id`),
+  KEY `FKoja1oph5yoo5rd3o68u9kpqip` (`exam_paper_exam_paper_id`),
+  KEY `FK3sdqoyf37c6edybn0j97o6nuo` (`grade_grade_id`),
+  KEY `FKmpaqy2kjusf14i4q08p37nk6c` (`user_user_id`),
+  CONSTRAINT `FK3sdqoyf37c6edybn0j97o6nuo` FOREIGN KEY (`grade_grade_id`) REFERENCES `grade` (`grade_id`),
+  CONSTRAINT `FKmpaqy2kjusf14i4q08p37nk6c` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `FKoja1oph5yoo5rd3o68u9kpqip` FOREIGN KEY (`exam_paper_exam_paper_id`) REFERENCES `exam_paper` (`exam_paper_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_authority`
+-- Dumping data for table `examination`
 --
 
-LOCK TABLES `user_authority` WRITE;
-/*!40000 ALTER TABLE `user_authority` DISABLE KEYS */;
-INSERT INTO `user_authority` VALUES (3,'ROLE_ADMIN'),(4,'ROLE_PROFESSOR'),(2,'ROLE_USER'),(3,'ROLE_USER'),(4,'ROLE_USER'),(5,'ROLE_USER');
-/*!40000 ALTER TABLE `user_authority` ENABLE KEYS */;
+LOCK TABLES `examination` WRITE;
+/*!40000 ALTER TABLE `examination` DISABLE KEYS */;
+/*!40000 ALTER TABLE `examination` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:11
+-- Dump completed on 2024-01-10 10:00:05

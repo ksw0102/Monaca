@@ -16,30 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `attendance`
+-- Table structure for table `characters`
 --
 
-DROP TABLE IF EXISTS `attendance`;
+DROP TABLE IF EXISTS `characters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendance` (
-  `attendance_id` bigint NOT NULL AUTO_INCREMENT,
-  `time_stamp` datetime(6) NOT NULL,
-  `user_user_id` bigint DEFAULT NULL,
-  `login_id` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`attendance_id`),
-  KEY `FKp85vv8ywqt30kf8wposdrhaa2` (`user_user_id`),
-  CONSTRAINT `FKp85vv8ywqt30kf8wposdrhaa2` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
+CREATE TABLE `characters` (
+  `character_id` bigint NOT NULL AUTO_INCREMENT,
+  `character_name` varchar(20) DEFAULT NULL,
+  `image` varchar(500) DEFAULT NULL,
+  `species` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendance`
+-- Dumping data for table `characters`
 --
 
-LOCK TABLES `attendance` WRITE;
-/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
+LOCK TABLES `characters` WRITE;
+/*!40000 ALTER TABLE `characters` DISABLE KEYS */;
+/*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-09 14:25:10
+-- Dump completed on 2024-01-10 10:00:04
